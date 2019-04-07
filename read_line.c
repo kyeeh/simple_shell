@@ -1,5 +1,6 @@
 #include "shell.h"
 
+
 char *read_line(void)
 {
   size_t linelen;
@@ -10,7 +11,10 @@ char *read_line(void)
   
   (void)linelen;
   write(STDOUT_FILENO, "$", 1);
+  write(STDOUT_FILENO, " ", 1);  
   linelen = getline(&lptr, &buff_size, stdin);
+  if (lptr[linelen - 1] == EOF)
+    exit (98);
 			
   /* while (*line != EOF) */
   /* { */
