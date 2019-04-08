@@ -17,29 +17,12 @@ char *read_line(void)
   
   (void)linelen;
   (void)buff_size;
+  (void)inp_char;
 
   write(STDOUT_FILENO, "$", 1); 
   write(STDOUT_FILENO, " ", 1);   
-  while (1) 
-    {
-
-  /* linelen = getline(&lptr, &buff_size, stdin); */
-  /* if (lptr[linelen - 1] == EOF) */
-  /*   exit (98); */
-      inp_char = getchar();
-
-      if (inp_char != 10 || inp_char != EOF)
-	{
-	  line[linelen] = inp_char;
-	  linelen++;
-	  
-	}
-      else
-	{
-	  line[linelen] = '\0';
-	  printf("Llegamos aqui");
-	  return (lptr);
-	}
-}
+   linelen = getline(&lptr, &buff_size, stdin); 
+   if (lptr[linelen - 1] == EOF) 
+     exit (98); 
   return (lptr);
 }
