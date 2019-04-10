@@ -1,33 +1,38 @@
 #include "shell.h"
 /**
- * main - stat example
- *
- * Return: Always 0.
+ * main - Simple Shell
+ * @ac: Argument counter.
+ * @av: Argument values.
+ * Return: 0 or -1 in failure.
  */
 int main(int ac, char **av)
 {
-	size_t linelen, buff_size = 1024;
+	size_t linelen, buff_size = 1024, size = 0;
 	char line[buff_size];
-	char *lptr = line;
 
+	while ((*(*av + size)) != '\0')
+		size += 1;
 	if (ac > 1)
 	{
-		while (0)
-		{
-			/* read shell script - no iterative */
-		}
+    	printf("%s", *av);
 	}
 	else
 	{
 		while (1)
 		{
-			write(STDOUT_FILENO, "$", 1);
-			linelen = getline(&lptr, &buff_size, stdin);
-			
-			while (*line != EOF)
+			/* printf("Buffer address: %p\n", (void *)line); */
+			linelen = _prompt(line, buff_size);
+			if (linelen >= 0)
 			{
-
+				if (_fork(line, av) < 0)
+				{
+					/* printf("Buffer address: %p\n", (void *)line); */
+					error_handler(*av, size, 101);
+					
+				}
 			}
+			else
+				error_handler(*av, size, 100);
 		}
 	}
 	return (0);
