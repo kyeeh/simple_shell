@@ -1,28 +1,37 @@
 #include "shell.h"
-char _getchar()
-{
-  char c;
 
-  return (read(STDIN_FILENO, &c, 1) == 1) ? (unsigned char) c : EOF;
+int _getchar(void)
+{
+  return (0);
 }
 
 char *read_line(void)
 {
-  size_t linelen = 0;
   size_t buff_size = 1024;
   char inp_char;
   char line[1024];
-  char *lptr = line;
+  char *lptr;
+  int pos = 0;
 
-  
-  (void)linelen;
+  (void)lptr;  
   (void)buff_size;
-  (void)inp_char;
 
   write(STDOUT_FILENO, "$", 1); 
   write(STDOUT_FILENO, " ", 1);   
-   linelen = getline(&lptr, &buff_size, stdin); 
-   if (lptr[linelen - 1] == EOF) 
-     exit (98); 
-  return (lptr);
+  while(1)
+    {
+      inp_char = getchar();/*provisional getchar function*/
+
+    if (inp_char == '\n')
+      {
+	line[pos] = '\0';
+	lptr = line;
+	return (lptr);
+      }
+    else
+      {
+	line[pos] = inp_char;
+      }
+    pos++;
+    }
 }

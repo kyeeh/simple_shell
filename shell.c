@@ -22,7 +22,10 @@ int main(int ac, char **av)
 	else
 	{
 	  while (1)
+	    {
 		  line_read = read_line();
+		  printf("linea traida %s", line_read); 
+	    }
 	}
 	return (0);
 }
