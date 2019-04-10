@@ -7,8 +7,8 @@
  */
 int main(int ac, char **av)
 {
-	size_t linelen, buff_size = 1024, size = 0;
-	char line[buff_size];
+  size_t linelen, size = 0, buff_size = 1024;
+  char line[1024];
 
 	while ((*(*av + size)) != '\0')
 		size += 1;
@@ -22,7 +22,7 @@ int main(int ac, char **av)
 		{
 			/* printf("Buffer address: %p\n", (void *)line); */
 			linelen = _prompt(line, buff_size);
-			if (linelen >= 0)
+			if (linelen > 0)
 			{
 				if (_fork(line, av) < 0)
 				{

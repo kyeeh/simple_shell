@@ -5,7 +5,7 @@ int _getchar(void)
   return (0);
 }
 
-char *read_line(void)
+char *_getline(void)
 {
   static size_t buff_size = 1024;
   static char inp_char;
@@ -16,8 +16,6 @@ char *read_line(void)
   (void)lptr;  
   (void)buff_size;
 
-  write(STDOUT_FILENO, "$", 1); 
-  write(STDOUT_FILENO, " ", 1);   
   while(1)
     {
       inp_char = getchar();/*provisional getchar function*/
