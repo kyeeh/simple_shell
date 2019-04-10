@@ -2,6 +2,8 @@
 #define SHELL_H
 
 #include <stdio.h>
+#include <wchar.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -25,5 +27,6 @@ typedef struct error_msg
 int _prompt(char *, size_t);
 void error_handler(char *, int, int );
 int _fork(char *, char **);
+char *read_line(void);
 
 #endif
