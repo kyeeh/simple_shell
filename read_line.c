@@ -7,11 +7,11 @@ int _getchar(void)
 
 char *read_line(void)
 {
-  size_t buff_size = 1024;
-  char inp_char;
-  char line[1024];
-  char *lptr;
-  int pos = 0;
+  static size_t buff_size = 1024;
+  static char inp_char;
+  static char line[1024];
+  static char *lptr;
+  static int pos = 0;
 
   (void)lptr;  
   (void)buff_size;
