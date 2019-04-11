@@ -4,25 +4,28 @@
  *
  * Return: Always 0.
  */
-int _fork(char *cmd, char **av)
+int _fork(int ac, char **av)
 {
-	int status;
+	int i, status;
 	pid_t child_pid, my_pid;
 
-	child_pid = fork();
-	if (child_pid == -1)
-		return (-1);
-	my_pid = getpid();
-	printf("My pid is %u\n", my_pid);	
-	if (child_pid == 0)
+	for (i = 0; i < ac; i++)
 	{
-		printf("DEBUG: Child Process for %s\n\n", cmd);
-		sleep(1);
-	}
-	else
-	{
-		printf("DEBUG: Parent Process for %s\n\n", *av);
-		wait(&status);
+		child_pid = fork();
+		if (child_pid == -1)
+			return (0);
+		my_pid = getpid();
+		printf("My pid is %u\n", my_pid);	
+		if (child_pid)
+		{
+			printf("DEBUG: Parent Process for shell\n\n");
+			wait(&status);
+		}
+		else
+		{
+			printf("DEBUG: Child Process for %s(%i)\n\n", *av, ac);
+			sleep(1);
+		}
 	}
 	return (1);
 }

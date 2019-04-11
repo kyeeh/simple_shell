@@ -1,9 +1,9 @@
 
 #include "shell.h"
 /**
- * main - stat example
+ * main - stat of a file
  *
- * Return: Always 0.
+ * Return: 1 on sucess, -1 on failure.
  */
 int _stat(int ac, char **av)
 {

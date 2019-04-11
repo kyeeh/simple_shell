@@ -7,8 +7,10 @@
  */
 int main(int ac, char **av)
 {
-	size_t linelen, buff_size = 1024, size = 0;
-	char line[buff_size];
+	size_t cmd_amount, buff_size = 1024, size = 0, cmd_size = 512;
+	char cmd_line[buff_size];
+	char *commands[cmd_size];
+	//char *cmds_ptr = cmd_line;
 
 	while ((*(*av + size)) != '\0')
 		size += 1;
@@ -21,10 +23,10 @@ int main(int ac, char **av)
 		while (1)
 		{
 			/* printf("Buffer address: %p\n", (void *)line); */
-			linelen = _prompt(line, buff_size);
-			if (linelen >= 0)
+			cmd_amount = _prompt(cmd_line, buff_size);
+			if (cmd_amount)
 			{
-				if (_fork(line, av))
+				if (_fork(cmd_amount, &commands)) // just for one word commands
 				{
 					/* printf("Buffer address: %p\n", (void *)line); */
 					
