@@ -3,15 +3,18 @@
  * error_handler - error message printer
  *
  */
-void error_handler(char *myself, int size, int msg_code)
+void error_handler(char *myself, int msg_code)
 {
-	int i = 0, ec = 4, printed = 0;
+	int i = 0, printed = 0;
+	int ec = 4; /* Error message counter - Update it when you add new messages*/
+	size_t size = _strlen(myself);
 
 	error_msg_t errors[] = {
 		{00, "Error unknown", 14},
 		{100, "Error reading from Prompt - Zero tokens", 40},
 		{101, "No such file or directory", 26},
-		{102, "Error creating child process", 28}
+		{102, "Error creating child process", 28},
+		{103, "command not found", 17}
 	};
 
 	write(STDERR_FILENO, myself, size);

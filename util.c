@@ -1,10 +1,9 @@
 #include "shell.h"
 /**
- * error_handler - error message printer
+ * strlen - return the length of a string
  *
  */
-
-size_t strlen(char *str)
+size_t _strlen(char *str)
 {
 	size_t i = 0;
 

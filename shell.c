@@ -33,10 +33,10 @@ int main(int ac, char **av)
 					
 				}
 				else
-					error_handler(*av, size, 102);
+					error_handler(*av, 102);
 			}
 			else
-				error_handler(*av, size, 100);
+				error_handler(*av, 100);
 		}
 	}
 	return (0);

@@ -27,10 +27,10 @@ typedef struct error_msg
 } error_msg_t;
 
 size_t _prompt(char *, size_t , char **, size_t);
-void error_handler(char *, int, int );
+void error_handler(char *, int);
 int _fork(size_t, char **);
 char *read_line(void);
 int _stat(char *);
-size_t strlen(char *str);
+size_t _strlen(char *str);
 
 #endif

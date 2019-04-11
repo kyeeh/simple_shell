@@ -24,9 +24,9 @@ int _fork(size_t ac, char **av)
 		}
 		else
 		{
-			printf("DEBUG: Child Process for %s(%zu)\n\n", *av[i], ac);
+			printf("DEBUG: Child Process for %s(%zu)\n\n", av[i], ac);
 			//sleep(1);
-			if (stat(av[i]))
+			if (_stat(av[i]))
 				child_pid = fork();
 			else
 				return (0);
