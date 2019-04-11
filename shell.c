@@ -24,12 +24,14 @@ int main(int ac, char **av)
 			linelen = _prompt(line, buff_size);
 			if (linelen >= 0)
 			{
-				if (_fork(line, av) < 0)
+				if (_fork(line, av))
 				{
 					/* printf("Buffer address: %p\n", (void *)line); */
-					error_handler(*av, size, 101);
+					
 					
 				}
+				else
+					error_handler(*av, size, 102);
 			}
 			else
 				error_handler(*av, size, 100);

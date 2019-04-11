@@ -5,12 +5,13 @@
  */
 void error_handler(char *myself, int size, int msg_code)
 {
-	int i = 0, ec = 3;
+	int i = 0, ec = 4;
 
 	error_msg_t errors[] = {
 		{00, "Error unknown", 14},
 		{100, "Error reading from Prompt - Zero length", 40},
-		{101, "No such file or directory", 26}
+		{101, "No such file or directory", 26},
+		{102, "Error creating child process", 28}
 	};
 
 	write(STDERR_FILENO, myself, size);
