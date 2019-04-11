@@ -26,7 +26,7 @@ typedef struct error_msg
 	int  size;
 } error_msg_t;
 
-char **_prompt(char *, size_t);
+int _prompt(char *, size_t , char **, size_t);
 void error_handler(char *, int, int );
 int _fork(int, char **);
 char *read_line(void);

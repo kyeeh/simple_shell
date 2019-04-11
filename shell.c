@@ -23,10 +23,10 @@ int main(int ac, char **av)
 		while (1)
 		{
 			/* printf("Buffer address: %p\n", (void *)line); */
-			cmd_amount = _prompt(cmd_line, buff_size);
+			cmd_amount = _prompt(cmd_line, buff_size, commands, cmd_size);
 			if (cmd_amount)
 			{
-				if (_fork(cmd_amount, &commands)) // just for one word commands
+				if (_fork(cmd_amount, commands)) // just for one word commands
 				{
 					/* printf("Buffer address: %p\n", (void *)line); */
 					

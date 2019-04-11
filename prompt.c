@@ -4,8 +4,8 @@
  */
 int _prompt(char *cmd_line, size_t in_size, char **cmds, size_t out_size)
 {
-	int i, j = 0, cmd_sep_num = 3;
-	const char cmd_sep[] = {";", "|", "&&"};
+	size_t i, j = 0, cmd_sep_num = 3;
+	const char *cmd_sep[] = {";", "|", "&&"};
 	// char *cmd_sep = ";|&&";
 	// char cmd_sep[] = {'"', "'", "`", '\\', '*', "&", "#"};
 
@@ -15,7 +15,7 @@ int _prompt(char *cmd_line, size_t in_size, char **cmds, size_t out_size)
 	{
 		while(cmds[j] != NULL && j < out_size) {
 			cmds[j] = strtok(cmd_line, cmd_sep[i]);
-			printf( "Token(j) %s\n", j, *cmds[j]);
+			printf( "Token(%zu) %s\n", j, cmds[j]);
 			j++;
 		}
 	}
