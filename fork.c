@@ -9,7 +9,7 @@ int _fork(size_t ac, char **av)
 	size_t i;
 	pid_t status, child_pid, my_pid;
 
-	printf("Commands amount: %zu\n", ac);
+	printf("DEBUG: Commands amount: %zu\n", ac);
 	for (i = 0; i < ac; i++)
 	{
 		child_pid = fork();
@@ -24,8 +24,12 @@ int _fork(size_t ac, char **av)
 		}
 		else
 		{
-			printf("DEBUG: Child Process for %s(%zu)\n\n", *av, ac);
-			sleep(1);
+			printf("DEBUG: Child Process for %s(%zu)\n\n", *av[i], ac);
+			//sleep(1);
+			if (stat(av[i]))
+				child_pid = fork();
+			else
+				return (0);
 		}
 	}
 	return (1);

@@ -30,5 +30,7 @@ size_t _prompt(char *, size_t , char **, size_t);
 void error_handler(char *, int, int );
 int _fork(size_t, char **);
 char *read_line(void);
+int _stat(char *);
+size_t strlen(char *str);
 
 #endif
