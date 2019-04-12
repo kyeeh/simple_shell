@@ -9,6 +9,8 @@ int main(int ac, char **av)
 {
   size_t linelen, size = 0, buff_size = 1024;
   char line[1024];
+  history_t **history;
+
 
 	while ((*(*av + size)) != '\0')
 		size += 1;
@@ -21,7 +23,9 @@ int main(int ac, char **av)
 		while (1)
 		{
 			/* printf("Buffer address: %p\n", (void *)line); */
-			linelen = _prompt(line, buff_size);
+		  linelen = _prompt(line, buff_size);
+		  add_nodeint_end (history, linelen);
+
 			if (linelen > 0)
 			{
 				if (_fork(line, av) < 0)

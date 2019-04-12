@@ -17,6 +17,18 @@
  * @msg: pointer to error message
  * @size: error message length.
  */
+typedef struct history
+{
+  unsigned int h_id;
+  char *str;
+  struct history *prev;
+  struct history *next;
+} history_t;
+
+char *read_line(void);
+char *_strdup(char *str);
+void *add_nodeint_end(history_t **head, char *string);
+
 typedef struct error_msg
 {
 	int ecode;
