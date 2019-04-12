@@ -24,10 +24,15 @@ int _fork(size_t ac, char **av)
 		}
 		else
 		{
-			printf("DEBUG: Child Process for %s(%zu)\n\n", av[i], ac);
+			printf("DEBUG FORK.C: Child Process for %s(%zu)\n\n", av[i], ac);
 			//sleep(1);
 			if (_stat(av[i]))
-				child_pid = fork();
+			{
+				// ToDO: split command and params
+				av[0] = "/bin/ls"; /* Test values */
+				av[1] =  NULL; 
+				_exec(av[i], av);
+			}
 			else
 				return (0);
 		}

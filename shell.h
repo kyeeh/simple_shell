@@ -32,5 +32,6 @@ int _fork(size_t, char **);
 char *read_line(void);
 int _stat(char *);
 size_t _strlen(char *str);
+int _exec(char *, char *const[]);
 
 #endif

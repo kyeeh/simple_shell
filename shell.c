@@ -32,8 +32,8 @@ int main(int ac, char **av)
 					
 					
 				}
-				else
-					error_handler(*av, 102);
+				/* else
+					error_handler(*av, 102); */
 			}
 			else
 				error_handler(*av, 100);
