@@ -26,12 +26,15 @@ typedef struct error_msg
 	int  size;
 } error_msg_t;
 
-size_t _prompt(char *, size_t , char **, size_t);
+size_t _prompt(char **, size_t *);
 void error_handler(char *, int);
 int _fork(size_t, char **);
 char *read_line(void);
 int _stat(char *);
 size_t _strlen(char *str);
 int _exec(char *, char *const[]);
+size_t _parser_cmd(char *, char **, size_t *);
+size_t _parser_arg(char *, char **, size_t *);
+void print_char_pointer_arr(char **, size_t);
 
 #endif
