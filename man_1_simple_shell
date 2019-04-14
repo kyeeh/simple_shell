@@ -1,0 +1,54 @@
+.\"Modified from man(1) of FreeBSD, the NetBSD mdoc.template, and mdoc.samples.
+.\"See Also:
+.\"man mdoc.samples for a complete listing of options
+.\"man mdoc for the short list of editing options
+.\"/usr/share/misc/mdoc.template
+.Dd 8/4/10               \" DATE
+.Dt simple_shell 1      \" Program name and manual section number
+.Os simple_shell manpage
+.Sh NAME                 \" Section Header - required - don't modify
+.Nm simple_shell
+.\" The following lines are read in generating the apropos(man -k) database. Use only key
+.Nd command interpreter (shell)
+.Sh SYNOPSIS             \" Section Header - required - don't modify
+.Nm
+.Op Fl abcd              \" [-abcd]
+.Op Fl a Ar path         \" [-a path]
+.Op Ar file              \" [file]
+.Op Ar                   \" [file ...]
+.Ar arg0                 \" Underlined argument - use .Ar anywhere to underline
+arg2 ...                 \" Arguments
+.Sh DESCRIPTION      \" Section Header - required - don't modify
+.Nm
+simple_shell is a simple implementation of the standard command interpreter for the system that receives comands from the standard input or a file. This version has many features that make it similar in some aspects to the standard shell, but it is
+a simple program to learn its operation. Only some standard shell features have been incorporated. This manual page is not intended to be a tutorial or a full specification of 
+.Nm 
+. .
+.Sh ARGUMENTS
+The first argument is assumed to be the name of a file containing 
+.Nm
+commands. The 
+.Nm
+reads and executes commands from this file, then exits. 
+.Nm
+'s exit status is the exit status of the last command executed in the script. If no commands are executed, the exit status is 0. An attempt is first made to open the file in the current directory, and, if no file is found, then the 
+.Nm 
+searches the directories in PATH for the script.
+
+.Sh BUILTING COMMANDS
+.Pp                      \" Inserts a space
+This is the list of builting commands with their descriptions:
+.Bl -tag -width -indent  \" Begins a tagged list
+.It Fl cd                 \"-a flag as a list item
+The cd command change the simple_shell working directory
+.It Fl cd                 \"-a flag as a list item
+The cd command change the simple_shell working directory
+.El                      \" Ends the list
+
+.Sh AUTHORS
+Nildiert Jimenez
+
+Ricardo Gutierrez
+    
+.\" .Sh BUGS              \" Document known, unremedied bugs
+.\" .Sh HISTORY           \" Document history if command behaves in a unique manner
