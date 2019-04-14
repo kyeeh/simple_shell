@@ -10,8 +10,6 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
-#define BIN_PATH /bin
-
 /**
  * struct error_msg - An structure for each error message
  *
@@ -29,22 +27,20 @@ typedef struct error_msg
 /**
  * struct cmd - An structure for each command
  *
- * @eoc: char to mark the end of command.
  * @command: command with arguments.
  * @next: pointer to next command.
  */
 typedef struct command_s
 {
-	char eoc;
 	char **command;
 	struct command_s *next;
 } command_t;
 
 /* Shell functions */
-command_t *_prompt(void);
-int _fork(size_t, char **);
+command_t **_prompt(char *);
+int _fork(command_t *);
 int _stat(char *);
-int _exec(char *, char *const[]);
+int _exec(char **);
 
 /* Utilities */
 char *read_line(void);
@@ -55,6 +51,6 @@ void print_char_pointer_arr(char **, size_t);
 
 /* Error handler */
 void error_handler(int);
-void error_handler_set_default(char *);
+void error_handler_set_default(int, char *);
 
 #endif

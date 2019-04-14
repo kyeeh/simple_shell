@@ -42,11 +42,11 @@ void error_handler(int msg_code)
  * error_handler - error message printer
  *
  */
-void error_handler_set_default(char *shell_name)
+void error_handler_set_default(int ac, char *shell_name)
 {
-	printf("YO: %s\n", shell_name);
+	printf("YO SOY: %s\n", shell_name);
 	write(STDERR_FILENO, shell_name, _strlen(shell_name));
-	write(STDERR_FILENO, ": ", 2);
+	write(STDERR_FILENO, ": ", ac + 1);
 	myself = shell_name;
 	write(STDERR_FILENO, "\n", 1);
 }

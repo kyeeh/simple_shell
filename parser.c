@@ -39,7 +39,7 @@ command_t *_parser_cmd(char *cmd_line)
 	{
 		cmd_node = malloc(sizeof(command_t));
 		if (!cmd_node)
-			error_handler("./shell", 104);
+			error_handler(104);
 		cmd_node->command[i] = cmd_str;
 		cmd_node->next = NULL;
 		printf( "Token(%zu) %s\n", i, cmd_node->command[0]);

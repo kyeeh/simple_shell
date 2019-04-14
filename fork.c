@@ -5,7 +5,7 @@
  * @av: arguments array
  * Return: 1 on sucess, 0 on failure.
  */
-int _fork(size_t ac, char **av)
+int _fork(command_t *cmd_node)
 {
 	pid_t status, child_pid, my_pid;
 
@@ -21,14 +21,14 @@ int _fork(size_t ac, char **av)
     }
     else
     {
-        printf("DEBUG FORK.C: Child Process for %s(%zu)\n\n", av[0], ac);
+        printf("DEBUG FORK.C: Child Process for %s\n", cmd_node->command[0]);
         //sleep(1);
-        if (_stat(*av))
+        if (_stat(cmd_node->command[0]))
         {
             // ToDO: split command and params
             //av[0] = "/bin/ls"; /* Test values */
-            av[ac] =  NULL; 
-            _exec(av[0], av);
+            //av[ac] =  NULL; 
+            _exec(cmd_node->command);
         }
         else
             return (0);

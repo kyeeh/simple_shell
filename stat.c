@@ -13,6 +13,6 @@ int _stat(char *cmd)
 	if (stat(cmd, &st) == 0)
 		return (1);
 	else
-		error_handler(cmd, 103);
+		error_handler(103);
 	return (0);
 }
