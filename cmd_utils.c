@@ -28,10 +28,7 @@ command_t *new_cmd_node(char *myself)
  */
 void add_tok_to_cmd(char *sh, command_t *cmd_node, size_t index, char *token)
 {
-	size_t tok_len;
-
-	tok_len = _strlen(token);
-	cmd_node->command[index] = malloc(sizeof(char) * tok_len);
+	cmd_node->command[index] = _strdup(token);
 	if (!cmd_node->command[index])
 		error_handler(sh, 104);
 	cmd_node->command[index] = token;	

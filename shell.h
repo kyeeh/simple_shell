@@ -102,6 +102,6 @@ void error_handler_set_default(int, char *);
 
 /* Command Utilities */
 command_t *new_cmd_node(char *);
-void add_token_to_cmd(char *, command_t *, size_t , char *);
+void add_tok_to_cmd(char *, command_t *, size_t , char *);
 
 #endif
