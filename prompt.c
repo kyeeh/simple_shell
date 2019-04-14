@@ -16,10 +16,7 @@ command_t **_prompt(char *shell_phrase)
 		write(STDOUT_FILENO, shell_phrase, char_amount);
 	char_amount = getline(&cmd_line, &buff_size, stdin); /* Insert new _getline */
 	if (*cmd_line == '\n' || char_amount ) 
-	{
-		free(cmd_list);
 		cmd_list = NULL;
-	}
 	else
 	{
 		*cmd_list = _parser_cmd(cmd_line);
