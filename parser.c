@@ -2,6 +2,7 @@
 /**
  * _parser_cmd - Parses a simple command from prompt.
  * @cmd_line: command line to be parsed from prompt.
+ * @myself: my own name as shell.
  *
  * Return: NULL or pointer to command node
  */
