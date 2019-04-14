@@ -8,7 +8,7 @@
 
 void _exit_func(char **environ)
 {
-  (void)environ;
-  /* free_listint(*history); */
-  exit(98);
+	(void)environ;
+	/* free_listint(*history); */
+	exit(98);
 }

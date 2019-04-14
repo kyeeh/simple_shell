@@ -5,7 +5,7 @@
  *
  * Return: NULL or pointer to command node
  */
-command_t *_parser_cmd(char *cmd_line)
+command_t *_parser_cmd(char *myself, char *cmd_line)
 {
 	unsigned int i = 0;
 	char *cmd_str = NULL;
@@ -18,7 +18,7 @@ command_t *_parser_cmd(char *cmd_line)
 	{
 		cmd_node = malloc(sizeof(command_t));
 		if (!cmd_node)
-			error_handler(104);
+			error_handler(myself, 104);
 		cmd_node->command[i] = cmd_str;
 		cmd_node->next = NULL;
 		while (cmd_str != NULL)
