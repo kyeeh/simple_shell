@@ -26,15 +26,13 @@ command_t *new_cmd_node(char *myself)
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-void *add_tok_to_cmd(char *sh, command_t *cmd_node, size_t index, char *token)
+void add_tok_to_cmd(char *sh, command_t *cmd_node, size_t index, char *token)
 {
 	size_t tok_len;
-	char *str = NULL;
 
 	tok_len = _strlen(token);
 	cmd_node->command[index] = malloc(sizeof(char) * tok_len);
 	if (!cmd_node->command[index])
 		error_handler(sh, 104);
 	cmd_node->command[index] = token;	
-	return (cmd_node);
 }

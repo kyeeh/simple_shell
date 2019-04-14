@@ -17,10 +17,9 @@ command_t *_parser_cmd(char *myself, char *cmd_line)
 	cmd_str = strtok(cmd_line, arg_sep); /* get the first token */
 	if (cmd_str)
 	{
-		cmd_node = malloc(sizeof(command_t));
-		if (!cmd_node)
-			error_handler(myself, 104);
-		cmd_node->command[i] = cmd_str;
+		cmd_node = new_cmd_node(myself);
+		add_tok_to_cmd(myself, cmd_node, i, cmd_str);
+		/* cmd_node->command[i] = cmd_str; */
 		cmd_node->next = NULL;
 		while (cmd_str != NULL)
 		{ /* walk through other tokens */
