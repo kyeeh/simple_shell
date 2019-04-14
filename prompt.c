@@ -6,10 +6,13 @@
  */
 char * _prompt(char *cmds[], size_t *cmd_size)
 {
-	size_t buff_size = 1024;
-    char cmd_line[buff_size];
+  size_t buff_size = 1024;
+    char cmd_line[1024];
     char *cmd_ptr = NULL;
 
+    (void)cmd_line;
+    (void)cmds;
+    (void)cmd_size;
 	write(STDOUT_FILENO, "#cisfun$ ", 9);
 	getline(&cmd_ptr, &buff_size, stdin); /* Insert new _getline */
 

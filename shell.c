@@ -10,8 +10,10 @@ char *read_line(void)
 {
   char *line;
   ssize_t bufsize = 0;
+  ssize_t size = 0;
 
-  getline(&line, &bufsize, stdin);
+  (void)size;
+  size = getline(&line, &bufsize, stdin);
 
    return (line);
 }
@@ -28,7 +30,7 @@ int main(int ac, char **av, char **env)
   while (1)
   {
     printf("$ ");
-    line_returned = read_line();
+    line_returned = _prompt(NULL, NULL);
     ver_buil_comm(line_returned, env);
     _which(path, line_returned);
     hist_status = add_nodeint(history, line_returned);

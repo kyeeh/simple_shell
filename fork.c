@@ -7,7 +7,7 @@
  */
 int _fork(size_t ac, char **av)
 {
-	pid_t status, child_pid, my_pid;
+  pid_t status, child_pid, my_pid;
 
     child_pid = fork();
     if (child_pid == -1)
@@ -21,12 +21,8 @@ int _fork(size_t ac, char **av)
     }
     else
     {
-        printf("DEBUG FORK.C: Child Process for %s(%zu)\n\n", av[0], ac);
-        //sleep(1);
         if (_stat(*av))
         {
-            // ToDO: split command and params
-            //av[0] = "/bin/ls"; /* Test values */
             av[ac] =  NULL; 
             _exec(av[0], av);
         }

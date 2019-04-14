@@ -29,6 +29,7 @@ char *find_path(char **environ)
 	    }
 	}
     }
+  return (NULL);
 }
 
 /**
@@ -61,7 +62,7 @@ void print_env(char **environ)
 
 void _which(char *p_rec, char *first_arg)
 {
-  char *path, *arg, *path_tok, *slash, *command;
+  char *path, *arg, *path_tok, *command;
   unsigned int size;
 
   size = _strlen(first_arg);
