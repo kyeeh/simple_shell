@@ -6,7 +6,7 @@
  *
  */
 
-void ver_buil_comm(char *str, char **env)
+int verif_built_comm(char *str, char **env)
 {
 	int iterator, result;
 	built_t built_func[] = {
@@ -18,6 +18,10 @@ void ver_buil_comm(char *str, char **env)
 	{
 		result = _strcmp(str, built_func[iterator].command);
 		if (result == 0)
+		{
 			built_func[iterator].f(env);
+			return (1);
+		}
 	}
+	return (0);
 }

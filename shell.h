@@ -94,7 +94,8 @@ void print_env();
 void _which(char *p_rec, char *first_arg);
 char *string_nconcat(char *s1, char *s2, unsigned int n);
 int _strcmp(char *s1, char *s2);
-void _exit_func(); 
+void _exit_func();
+int verif_built_comm(char *str, char **env);
 
 /* Error handler */
 void error_handler(char *, int);
