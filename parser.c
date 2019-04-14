@@ -28,7 +28,7 @@ size_t _parser(char *cmd_line, const char *sep, char **tokens, size_t *max_token
  */
 command_t *_parser_cmd(char *cmd_line)
 {
-	size_t i = 0;
+	unsigned int i = 0;
 	char *cmd_str = NULL;
 	/* const char *cmd_sep = ";|"; */
 	const char *cmd_sep = " ";
@@ -61,7 +61,7 @@ command_t *_parser_cmd(char *cmd_line)
  */
 size_t _parser_arg(char *command, char **args, size_t *argc)
 {
-	size_t i, j = 0, cmd_sep_num = 1;
+	unsigned int i, j = 0, cmd_sep_num = 1;
 	const char *cmd_sep[] = {" "};
 
     printf("DEBUG: Parsing command for argument s: ADDRESS-%p\n", (void *)command);

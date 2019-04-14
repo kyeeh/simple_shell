@@ -25,9 +25,8 @@ int _fork(command_t *cmd_node)
         /* sleep(1); */
         if (_stat(cmd_node->command[0]))
         {
-            /* ToDO: split command and params
-            av[0] = "/bin/ls"; /* Test values 
-            av[ac] =  NULL; */
+            /* av[0] = "/bin/ls"; */ /* Test values */
+            /* av[ac] =  NULL; */
             _exec(cmd_node->command);
         }
         else
