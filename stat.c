@@ -1,18 +1,19 @@
 
 #include "shell.h"
 /**
- * _stat - stat of a file
+ * _stat - stat of a file.
+ * @myself: my own name as shell.
+ * @cmd: filename to verify.
  *
  * Return: 1 on sucess, 0 on failure.
  */
-int _stat(char *av)
+int _stat(char *myself, char *cmd)
 {
 	struct stat st;
 
-	printf("DEBUG: Stat for %s\n", av);
-	if (stat(av, &st) == 0)
+	printf("DEBUG: Stat for %s\n", cmd);
+	if (stat(cmd, &st) == 0)
 		return (1);
-	else
-		error_handler(av, 103);
+	error_handler(myself, 103);
 	return (0);
 }
