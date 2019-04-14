@@ -6,7 +6,8 @@
  */
 command_t **_prompt(char *shell_phrase)
 {
-	size_t char_amount, buff_size = 0;
+	size_t buff_size = 0;
+	ssize_t char_amount = 0;
 	char *cmd_line = NULL;
 	command_t *cmd_node = NULL;
 	command_t **cmd_list = &cmd_node; /* Command List */
@@ -15,7 +16,7 @@ command_t **_prompt(char *shell_phrase)
 	if (shell_phrase)
 		write(STDOUT_FILENO, shell_phrase, char_amount);
 	char_amount = getline(&cmd_line, &buff_size, stdin); /* Insert new _getline */
-	if (*cmd_line == '\n' || char_amount ) 
+	if (*cmd_line == '\n' || char_amount < 0) 
 		cmd_list = NULL;
 	else
 	{
