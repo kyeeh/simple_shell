@@ -1,3 +1,22 @@
+*.swp
+shell
+*.dSYM
+.DS_Store
+*.o
+*.dSYM
+.vscode
+*printf*
+.gitignore
+
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
 *~
 test
 hsh
