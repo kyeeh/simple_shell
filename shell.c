@@ -1,30 +1,26 @@
 #include "shell.h"
 /**
- * main - stat example
- *
- * Return: Always 0.
+ * main - Simple Shell
+ * @ac: Argument counter.
+ * @av: Argument values.
+ * Return: 0 or -1 in failure.
  */
 int main(int ac, char **av)
 {
+  char *shell_pharse;
+  command_t **cmd_list = NULL; /* Command List */
 
-	char *line_read;
-
-	/*Provisional void for the unused variables*/
-	(void)line_read;
-	(void)av;
-	if (ac > 1)
+  shell_pharse = isatty(STDIN_FILENO) ? "#cisfun$ " : NULL;
+  while (1)
+    {
+      cmd_list = _prompt(shell_pharse); /* get commands from cmd_line */
+      if (cmd_list)
 	{
-		while (0)
-		{
-			/* read shell script - no iterative */
-		}
+	  if (!_fork(av[0], *cmd_list))
+	    error_handler(av[0], 102);
 	}
-	else
-	{
-	  while (1)
-	    {
-		  line_read = read_line();
-	    }
-	}
-	return (0);
+      else
+	error_handler(av[0], 103);
+    }
+  return (0);
 }
