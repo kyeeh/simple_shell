@@ -2,6 +2,8 @@
 /**
  * _fork - fork code to execute a new command
  * @cmd_node: Command node pointer.
+ * @myself: my own name as shell.
+ * 
  * Return: 1 on sucess, 0 on failure.
  */
 int _fork(char *myself, command_t *cmd_node)

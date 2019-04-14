@@ -2,6 +2,8 @@
 /**
  * _prompt - write prompt and read a command line.
  * @shell_phrase: String for prompt init.
+ * 
+ * Return: NULL or pointer to command list.
  */
 command_t **_prompt(char *shell_phrase)
 {
@@ -14,7 +16,8 @@ command_t **_prompt(char *shell_phrase)
 	char_amount = _strlen(shell_phrase);
 	if (shell_phrase)
 		write(STDOUT_FILENO, shell_phrase, char_amount);
-	char_amount = getline(&cmd_line, &buff_size, stdin); /* Insert new _getline */
+	/* ToDO: Insert new _getline */
+	char_amount = getline(&cmd_line, &buff_size, stdin);
 	if (*cmd_line == '\n' || char_amount < 0)
 	{
 		fflush(stdin);
@@ -24,7 +27,7 @@ command_t **_prompt(char *shell_phrase)
 	{
 		*cmd_list = _parser_cmd(cmd_line);
 		free(cmd_line);
-		cmd_line = NULL;		
+		cmd_line = NULL;	
 		return (cmd_list);
 	}
 	return (NULL);

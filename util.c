@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
  * strlen - return the length of a string
- *
+ * @str: string to check.
  */
 size_t _strlen(char *str)
 {
@@ -14,7 +14,8 @@ size_t _strlen(char *str)
 
 /**
  * print_char_pointer_arr - print String Array
- *
+ * @values: array of Strings to print.
+ * @length: array size.
  */
 void print_char_pointer_arr(char *values[], size_t length)
 {

@@ -1,6 +1,7 @@
 #include "shell.h"
 /**
- * main - execve example
+ * _exec - execve implementation for Simple Shell.
+ * @cmd: Command to execute.
  *
  * Return: Always 0.
  */

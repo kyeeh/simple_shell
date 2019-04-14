@@ -1,7 +1,8 @@
 #include "shell.h"
 /**
- * error_handler - error message printer
- *
+ * error_handler - error message handler
+ * @myself: my own nam as shell.
+ * @msg_code: error message number.
  */
 void error_handler(char *myself, int msg_code)
 {
@@ -14,7 +15,7 @@ void error_handler(char *myself, int msg_code)
 		{101, "No such file or directory", 26},
 		{102, "Error creating child process", 28},
 		{103, "command not found", 17},
-		{104, "FATAL ERROR: It's not possible to execute commands, THERE IS NO MEMORY AVAILABLE.", 17},
+		{104, "FATAL ERROR: NO MEMORY AVAILABLE.", 17},
 		{999, "", 0} /* Error Array end condition*/
 	};
 
@@ -32,17 +33,4 @@ void error_handler(char *myself, int msg_code)
 	if (!printed)
 		write(STDERR_FILENO, errors[0].msg, errors[0].size);
 	write(STDERR_FILENO, "\n", 1);
-}
-
-/**
- * error_handler - error message printer
- *
- */
-void error_handler_set_default(int ac, char *shell_name)
-{
-	/* printf("YO SOY: %s\n", shell_name);
-	write(STDERR_FILENO, shell_name, _strlen(shell_name));
-	write(STDERR_FILENO, ": ", ac + 1); */
-	myself = shell_name;
-	/* write(STDERR_FILENO, "\n", 1); */
 }
