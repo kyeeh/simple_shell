@@ -37,10 +37,8 @@ char *find_path(char **environ)
  * Return: 0 or -1 in failure.
  */
 
-void print_env(void)
+void print_env(char **environ)
 {
-  extern char **environ;
-  char buff[BUFF_SIZE];
   char **env_ptr;
   unsigned int size;
 

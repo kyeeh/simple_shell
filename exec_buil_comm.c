@@ -2,10 +2,11 @@
 /**
  * ver_buil_comm - Execute the builtins commands.
  * @str: First arg.
+ * @env: Environment variables.
  *
  */
 
-void ver_buil_comm(char *str)
+void ver_buil_comm(char *str, char **env)
 {
   int iterator, result;
 
@@ -25,7 +26,7 @@ void ver_buil_comm(char *str)
       /* printf("result %d, %s, %s\n", result, built_func[iterator].command, str); */
       if (result == 0) 
 	{
-	  built_func[iterator].f();
+	  built_func[iterator].f(env);
 	}
     } 
 

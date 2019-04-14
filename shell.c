@@ -29,7 +29,7 @@ int main(int ac, char **av, char **env)
   {
     printf("$ ");
     line_returned = read_line();
-    ver_buil_comm(line_returned);
+    ver_buil_comm(line_returned, env);
     _which(path, line_returned);
     hist_status = add_nodeint(history, line_returned);
     if (hist_status < 0)  

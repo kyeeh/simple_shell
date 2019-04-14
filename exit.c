@@ -3,9 +3,10 @@
 /**
  * _exit_func - Function to exit successfully
  *
+ * @environ: Environment variables.
  */
 
-void _exit_func(void)
+void _exit_func(char **environ)
 {
 
   /* free_listint(*history); */

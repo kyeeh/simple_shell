@@ -29,15 +29,16 @@ typedef struct error_msg
 
 /**
  * struct built_s - Builtings commands
- * @command: command name
- * @f: function to call
+ * @command: command name.
+ * @f: function to call.
+ * @env: Environment variables.
  *
  * Description: Longer description
  */
 typedef struct built_s
 {
   char *command;
-  void (*f)(void);
+  void (*f)(char **);
 } built_t;
 
 /**
