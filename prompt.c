@@ -5,6 +5,7 @@
  *
  * Return: NULL or pointer to command list.
  */
+
 command_t **_prompt(char *shell_phrase)
 {
 	size_t buff_size = 0;
