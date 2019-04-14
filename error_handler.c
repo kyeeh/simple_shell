@@ -9,7 +9,6 @@ char *myself = NULL;
 void error_handler(int msg_code)
 {
 	int i = 0, printed = 0;
-	//int ec = 5; /* Error message counter - Update it when you add new messages*/
 	size_t size = _strlen(myself);
 
 	error_msg_t errors[] = {

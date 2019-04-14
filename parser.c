@@ -9,16 +9,16 @@
 size_t _parser(char *cmd_line, const char *sep, char **tokens, size_t *max_tokens)
 {
 	size_t j = 0;
-    //const char *cmd_sep[] = {";", "|", "&&", "||"};
-	// char *cmd_sep = ";|&&";
-	// char cmd_sep[] = {'"', "'", "`", '\\', '*', "&", "#"};    
+    /*const char *cmd_sep[] = {";", "|", "&&", "||"};
+	char *cmd_sep = ";|&&";
+	char cmd_sep[] = {'"', "'", "`", '\\', '*', "&", "#"}; */
 
     tokens[j] = strtok(cmd_line, sep); /* get the first token */
-    printf( "Token(%zu) %s\n", j, tokens[j]);
+    printf( "Token(%u) %s\n", j, tokens[j]);
     while(tokens[j] != NULL && j < *max_tokens) {/* walk through other tokens */
         tokens[j] == NULL ? j : j++;
         tokens[j] = strtok(NULL, sep);
-        printf( "Token(%zu) %s\n", j, tokens[j]);
+        printf( "Token(%u) %s\n", j, tokens[j]);
     }
 	return (j); 
 }
@@ -42,12 +42,12 @@ command_t *_parser_cmd(char *cmd_line)
 			error_handler(104);
 		cmd_node->command[i] = cmd_str;
 		cmd_node->next = NULL;
-		printf( "Token(%zu) %s\n", i, cmd_node->command[0]);
+		printf( "Token(%u) %s\n", i, cmd_node->command[0]);
 		while(cmd_str != NULL) {/* walk through other tokens */
 			cmd_str == NULL ? i : i++;
 			cmd_str = strtok(NULL, cmd_sep);
 			cmd_node->command[i] = cmd_str;
-			printf( "Token(%zu) %s\n", i, cmd_node->command[i]);
+			printf( "Token(%u) %s\n", i, cmd_node->command[i]);
 		}
 	}
 	return (cmd_node); 
@@ -69,11 +69,11 @@ size_t _parser_arg(char *command, char **args, size_t *argc)
 	for (i = 0; i < cmd_sep_num; i++)
 	{
 		args[j] = strtok(command, cmd_sep[i]); /* get the first token */
-		printf( "Token(%zu) %s\n", j, args[j]);
+		printf( "Token(%u) %s\n", j, args[j]);
 		while(args[j] != NULL && j < *argc) {/* walk through other tokens */
 			args[j] == NULL ? j : j++;
 			args[j] = strtok(NULL, cmd_sep[i]);
-			printf( "Token(%zu) %s\n", j, args[j]);
+			printf( "Token(%u) %s\n", j, args[j]);
 		}
 	}
 	return (j); 

@@ -6,7 +6,7 @@
  */
 int _exec(char **cmd)
 {
-	//char *cmd[] = {"/bin/ls", "-l", "/usr/", NULL};
+	/* char *cmd[] = {"/bin/ls", "-l", "/usr/", NULL}; */
 
 	printf("Before execve\n");
 	if (execve(cmd[0], cmd, NULL) == -1)

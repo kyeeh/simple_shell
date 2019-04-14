@@ -22,7 +22,7 @@ int _fork(command_t *cmd_node)
     else
     {
         printf("DEBUG FORK.C: Child Process for %s\n", cmd_node->command[0]);
-        //sleep(1);
+        /* sleep(1); */
         if (_stat(cmd_node->command[0]))
         {
             // ToDO: split command and params
