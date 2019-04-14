@@ -28,6 +28,8 @@ char *_strdup(char *str)
 /**
  * strlen - return the length of a string
  *
+ * @str: The string that receives.
+ * Return: The count of characters in string.
  */
 size_t _strlen(char *str)
 {
@@ -39,7 +41,10 @@ size_t _strlen(char *str)
 }
 
 /**
- * strlen - return the length of a string
+ * print_char_pointer_arr - return the length of a string
+ * @values: The string that receives.
+ * @length: The string that receives.
+ * Return: The count of characters in string.
  *
  */
 void print_char_pointer_arr(char *values[], size_t length)
@@ -54,10 +59,10 @@ void print_char_pointer_arr(char *values[], size_t length)
 
 /**
  * *add_nodeint - Add node in the begin67ning
- * @str: The variable of int type that receives
- * @head: The pointer of the list
+ * @head: The pointer of the history list.
+ * @head: The pointer of the list.
  *
- * Return: The number of elements in the list
+ * Return: On success 1
  */
 
 int add_nodeint(history_t **head, char *str)
@@ -72,10 +77,10 @@ int add_nodeint(history_t **head, char *str)
     }
 
   new->comms = _strdup(str);  
-  printf("DEBUG: Address comms %p\n", (void*)&new->comms);
-  printf("DEBUG: Address new %p\n", (void*)&new);
-  printf("DEBUG: Address new next  %p\n", (void*)&new->next);
-  printf("DEBUG: Address new prev %p\n", (void*)&new->prev);
+  /* printf("DEBUG: Address comms %p\n", (void*)&new->comms);  */
+  /*  printf("DEBUG: Address new %p\n", (void*)&new);  */
+  /*  printf("DEBUG: Address new next  %p\n", (void*)&new->next);  */
+  /*  printf("DEBUG: Address new prev %p\n", (void*)&new->prev);  */
   if (new->comms == NULL)
     {
             free_listint(*head);
@@ -127,12 +132,83 @@ void free_listint(history_t *head)
  * Return: The number of elements in the list
  */
 
-
 void print_listint(const history_t *h)
 {
+
   while (h)
     {
-      printf("%s", h->comms);
+      /* printf("%s", h->comms); */
       h = h->next;
     }
+}
+
+/**
+ * *string_nconcat - Function that concatenates two strings
+ * @s1: The first string that receives
+ * @s2: The second string that receives
+ * @n: The number of bytes that you need copy
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+char *string_nconcat(char *s1, char *s2, unsigned int n)
+{
+  int i = 0, j = 0, len_s2 = 0;
+  char *ar;
+
+  if (s2 == NULL)
+    s2 = "";
+  if (s1 == NULL)
+    s1 = "";
+  len_s2 = _strlen(s2);
+  if (n >= (unsigned int)len_s2)
+    {
+      ar = malloc(_strlen(s1) + len_s2 + 1);
+    }
+  else
+    {
+      ar = malloc(_strlen(s1) + n + 1);
+    }
+  if (ar == NULL)
+    {
+      return (NULL);
+    }
+  for (i = 0; s1[i]; i++)
+    ar[i] = s1[i];
+  if (n >= (unsigned int)len_s2)
+    {
+      for (j = 0; s2[j]; j++, i++)
+	{
+	  ar[i] = s2[j];
+	}
+    }
+  else
+    {
+      for (j = 0; (unsigned int)j < n; j++, i++)
+	ar[i] = s2[j];
+    }
+  ar[i] = '\0';
+  return (ar);
+}
+
+/**
+ * *_strcmp - Compare two strings
+ * @s1: The string that receives
+ * @s2: The second string that receives
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _strcmp(char *s1, char *s2)
+{
+  int i = 0, comparition = 0;
+
+  while (*(s1 + i) && *(s2 + i))
+    {
+      if (s1[i] != s2[i])
+	return (s1[i] - s2[i]);
+      comparition += s1[i] - s2[i];
+      i++;
+    }
+  return (comparition);
 }
