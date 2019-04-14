@@ -7,29 +7,29 @@
 
 char *find_path(char **environ)
 {
-  char **env_ptr;
-  char *aux;
-  char *path;
-  char *token;
+	char **env_ptr;
+	char *aux;
+	char *path;
+	char *token;
 
-  if (environ == NULL)
-    return (NULL);
+	if (environ == NULL)
+		return (NULL);
 
-  for (env_ptr = environ; env_ptr != 0; env_ptr++)
-    {    
-      aux =  _strstr(*env_ptr, "PATH");
-      if (aux != NULL)
+	for (env_ptr = environ; env_ptr != 0; env_ptr++)
 	{
-	  path = _strdup(aux);
-	  token = strtok(path, "=");
-	  while(token != NULL)
-	    {
-	      token = strtok(NULL, "=");
-		return (token);
-	    }
+		aux =  _strstr(*env_ptr, "PATH");
+		if (aux != NULL)
+		{
+			path = _strdup(aux);
+			token = strtok(path, "=");
+			while(token != NULL)
+			{
+				token = strtok(NULL, "=");
+				return (token);
+			}
+		}
 	}
-    }
-  return (NULL);
+	return (NULL);
 }
 
 /**
@@ -40,17 +40,17 @@ char *find_path(char **environ)
 
 void print_env(char **environ)
 {
-  char **env_ptr;
-  unsigned int size;
+	char **env_ptr;
+	unsigned int size;
 
-  env_ptr = environ;
-  while (*env_ptr)
-    {    
-	  size = _strlen(*env_ptr);
-	  write(STDOUT_FILENO, *env_ptr, size);
-	  write(STDOUT_FILENO, "\n", 1);
-	  env_ptr++;
-    }
+	env_ptr = environ;
+	while (*env_ptr)
+	{
+		size = _strlen(*env_ptr);
+		write(STDOUT_FILENO, *env_ptr, size);
+		write(STDOUT_FILENO, "\n", 1);
+		env_ptr++;
+	}
 }
 
 /**
@@ -62,23 +62,21 @@ void print_env(char **environ)
 
 void _which(char *p_rec, char *first_arg)
 {
-  char *path, *arg, *path_tok, *command;
-  unsigned int size;
+	char *path, *arg, *path_tok, *command;
+	unsigned int size;
 
-  size = _strlen(first_arg);
-  
-  path = _strdup(p_rec);
-  arg = _strdup(string_nconcat("/", first_arg, size -1));
-  size = _strlen(arg);
+	size = _strlen(first_arg);
 
-  path_tok = strtok(path , ":");
-  while (path_tok != NULL)
-    {
-      command = string_nconcat(path_tok, arg, size);
-      if (access(command, F_OK) == 0)
+	path = _strdup(p_rec);
+	arg = _strdup(string_nconcat("/", first_arg, size -1));
+	size = _strlen(arg);
+
+	path_tok = strtok(path, ":");
+	while (path_tok != NULL)
 	{
-	  printf(":DEBUG: which %s status %d\n", command,access(command, F_OK));
+		command = string_nconcat(path_tok, arg, size);
+		if (access(command, F_OK) == 0)
+			printf(":DEBUG: which %s status %d\n", command, access(command, F_OK));
+		path_tok = strtok(NULL, ":");
 	}
-      path_tok = strtok(NULL, ":");
-    }
 }

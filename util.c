@@ -9,20 +9,20 @@
  */
 char *_strdup(char *str)
 {
-  int i = 0, size = 0;
-  char *ar;
+	int i = 0, size = 0;
+	char *ar;
 
-  if (!str)
-    return (NULL);
-  while (str[size])
-    size++;
-  ar = malloc(size * sizeof(char) + 1);
-  if (ar == NULL)
-    return (NULL);
-  for (i = 0; i < size; i++)
-    ar[i] = str[i];
-  ar[i] = '\0';
-  return (ar);
+	if (!str)
+		return (NULL);
+	while (str[size])
+	size++;
+	ar = malloc(size * sizeof(char) + 1);
+	if (ar == NULL)
+		return (NULL);
+	for (i = 0; i < size; i++)
+	ar[i] = str[i];
+	ar[i] = '\0';
+	return (ar);
 }
 
 /**
@@ -64,37 +64,37 @@ void print_char_pointer_arr(char *values[], size_t length)
 
 int add_nodeint(history_t **head, char *str)
 {
-  history_t *new = malloc(sizeof(head));
-  history_t *copy = *head;
+	history_t *new = malloc(sizeof(head));
+	history_t *copy = *head;
 
-  if (!new)
-    {
-      free_listint(*head);
-      return(-1);
-    }
+	if (!new)
+	{
+		free_listint(*head);
+		return(-1);
+	}
 
-  new->comms = _strdup(str);  
-  /* printf("DEBUG: Address comms %p\n", (void*)&new->comms);  */
-  /*  printf("DEBUG: Address new %p\n", (void*)&new);  */
-  /*  printf("DEBUG: Address new next  %p\n", (void*)&new->next);  */
-  /*  printf("DEBUG: Address new prev %p\n", (void*)&new->prev);  */
-  if (new->comms == NULL)
-    {
-            free_listint(*head);
-	    return (-1);
-    }
-  new->prev = NULL;
-  new->next = NULL;
-  if (!*head)
-    {
-      *head = new;
-    }
-  else
-    {
-      new->next = copy;
-      *head = new;
-    }
-  return(1);
+	new->comms = _strdup(str);
+	/* printf("DEBUG: Address comms %p\n", (void*)&new->comms);  */
+	/*  printf("DEBUG: Address new %p\n", (void*)&new);  */
+	/*  printf("DEBUG: Address new next  %p\n", (void*)&new->next);  */
+	/*  printf("DEBUG: Address new prev %p\n", (void*)&new->prev);  */
+	if (new->comms == NULL)
+	{
+		free_listint(*head);
+		return (-1);
+	}
+	new->prev = NULL;
+	new->next = NULL;
+	if (!*head)
+	{
+		*head = new;
+	}
+	else
+	{
+		new->next = copy;
+		*head = new;
+	}
+	return(1);
 }
 
 /**
@@ -107,19 +107,19 @@ int add_nodeint(history_t **head, char *str)
 
 void free_listint(history_t *head)
 {
-  history_t *delete;
+	history_t *delete;
 
-  if (!head)
-    return;
-  while (head)
-    {
-      delete = head->next;
-      free(head->comms);
-      free(head->prev);
-      free(head);
-      head = delete;
-    }
-  free(delete);
+	if (!head)
+		return;
+	while (head)
+	{
+		delete = head->next;
+		free(head->comms);
+		free(head->prev);
+		free(head);
+		head = delete;
+	}
+	free(delete);
 }
 
 /**
@@ -131,12 +131,11 @@ void free_listint(history_t *head)
 
 void print_listint(const history_t *h)
 {
-
-  while (h)
-    {
-      /* printf("%s", h->comms); */
-      h = h->next;
-    }
+	while (h)
+	{
+		/* printf("%s", h->comms); */
+		h = h->next;
+	}
 }
 
 /**
@@ -150,42 +149,42 @@ void print_listint(const history_t *h)
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-  int i = 0, j = 0, len_s2 = 0;
-  char *ar;
+	int i = 0, j = 0, len_s2 = 0;
+	char *ar;
 
-  if (s2 == NULL)
-    s2 = "";
-  if (s1 == NULL)
-    s1 = "";
-  len_s2 = _strlen(s2);
-  if (n >= (unsigned int)len_s2)
-    {
-      ar = malloc(_strlen(s1) + len_s2 + 1);
-    }
-  else
-    {
-      ar = malloc(_strlen(s1) + n + 1);
-    }
-  if (ar == NULL)
-    {
-      return (NULL);
-    }
-  for (i = 0; s1[i]; i++)
-    ar[i] = s1[i];
-  if (n >= (unsigned int)len_s2)
-    {
-      for (j = 0; s2[j]; j++, i++)
+	if (s2 == NULL)
+		s2 = "";
+	if (s1 == NULL)
+		s1 = "";
+	len_s2 = _strlen(s2);
+	if (n >= (unsigned int)len_s2)
 	{
-	  ar[i] = s2[j];
+		ar = malloc(_strlen(s1) + len_s2 + 1);
 	}
-    }
-  else
-    {
-      for (j = 0; (unsigned int)j < n; j++, i++)
-	ar[i] = s2[j];
-    }
-  ar[i] = '\0';
-  return (ar);
+	else
+	{
+		ar = malloc(_strlen(s1) + n + 1);
+	}
+	if (ar == NULL)
+	{
+		return (NULL);
+	}
+	for (i = 0; s1[i]; i++)
+		ar[i] = s1[i];
+	if (n >= (unsigned int)len_s2)
+	{
+		for (j = 0; s2[j]; j++, i++)
+		{
+			ar[i] = s2[j];
+		}
+	}
+	else
+	{
+		for (j = 0; (unsigned int)j < n; j++, i++)
+			ar[i] = s2[j];
+	}
+	ar[i] = '\0';
+	return (ar);
 }
 
 /**
@@ -198,14 +197,14 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
  */
 int _strcmp(char *s1, char *s2)
 {
-  int i = 0, comparition = 0;
+	int i = 0, comparition = 0;
 
-  while (*(s1 + i) && *(s2 + i))
-    {
-      if (s1[i] != s2[i])
-	return (s1[i] - s2[i]);
-      comparition += s1[i] - s2[i];
-      i++;
-    }
-  return (comparition);
+	while (*(s1 + i) && *(s2 + i))
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		comparition += s1[i] - s2[i];
+		i++;
+	}
+	return (comparition);
 }
