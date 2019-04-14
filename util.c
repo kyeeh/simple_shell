@@ -2,6 +2,8 @@
 /**
  * _strlen - return the length of a string
  * @str: string to check.
+ *
+ * Return: size of str.
  */
 size_t _strlen(char *str)
 {
