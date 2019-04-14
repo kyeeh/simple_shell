@@ -8,8 +8,8 @@
  */
 int main(int ac, char **av)
 {
-	char *shell_pharse;
-	command_t **cmd_list = NULL; /* Command List */
+  char *shell_pharse;
+  command_t **cmd_list = NULL; /* Command List */
 
 	ac++; 
 	shell_pharse = isatty(STDIN_FILENO) ? "#cisfun$ " : NULL;
