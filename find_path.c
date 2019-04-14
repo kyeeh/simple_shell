@@ -5,14 +5,15 @@
  *
  */
 
-char *find_path(void)
+char *find_path(char **environ)
 {
-  extern char **environ;
   char **env_ptr;
   char *aux;
   char *path;
   char *token;
 
+  if (environ == NULL)
+    return (NULL);
 
   for (env_ptr = environ; env_ptr != 0; env_ptr++)
     {    

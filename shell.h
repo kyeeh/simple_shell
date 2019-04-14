@@ -83,8 +83,7 @@ void print_char_pointer_arr(char **, size_t);
 int add_nodeint(history_t **head, char *str);
   char *_strdup(char *str);
 void free_listint(history_t *head);
-
-char *find_path();
+char *find_path(char **);
 char *_strstr(char *haystack, char *needle);
 void print_env();
 void _which(char *p_rec, char *first_arg);
