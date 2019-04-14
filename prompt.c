@@ -2,7 +2,7 @@
 /**
  * _prompt - write prompt and read a command line.
  * @shell_phrase: String for prompt init.
- * 
+ *
  * Return: NULL or pointer to command list.
  */
 command_t **_prompt(char *shell_phrase)
@@ -27,7 +27,7 @@ command_t **_prompt(char *shell_phrase)
 	{
 		*cmd_list = _parser_cmd(cmd_line);
 		free(cmd_line);
-		cmd_line = NULL;	
+		cmd_line = NULL;
 		return (cmd_list);
 	}
 	return (NULL);

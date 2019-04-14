@@ -17,7 +17,7 @@ char *read_line(void)
 	(void)buff_size;
 
 	write(STDOUT_FILENO, "$", 1);
-	write(STDOUT_FILENO, " ", 1); 
+	write(STDOUT_FILENO, " ", 1);
 	while (1)
 	{
 		inp_char = getchar();/*provisional getchar function*/

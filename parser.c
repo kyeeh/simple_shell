@@ -2,7 +2,7 @@
 /**
  * _parser_cmd - Parses a simple command from prompt.
  * @cmd_line: command line to be parsed from prompt.
- * 
+ *
  * Return: NULL or pointer to command node
  */
 command_t *_parser_cmd(char *cmd_line)
@@ -26,7 +26,6 @@ command_t *_parser_cmd(char *cmd_line)
 			cmd_str == NULL ? i : i++;
 			cmd_str = strtok(NULL, cmd_sep);
 			cmd_node->command[i] = cmd_str;
-			printf( "Token(%u) %s\n", i, cmd_node->command[i]);
 		}
 	}
 	return (cmd_node);
