@@ -15,7 +15,7 @@ command_t **_prompt(char *shell_phrase)
 	if (shell_phrase)
 		write(STDOUT_FILENO, shell_phrase, char_amount);
 	char_amount = getline(&cmd_line, &buff_size, stdin); /* Insert new _getline */
-	if (*cmd_line == '\n' || char_amount ) 
+	if (*cmd_line == '\n' || char_amount < 0) 
 	{
 		free(cmd_list);
 		cmd_list = NULL;
