@@ -26,15 +26,35 @@ typedef struct error_msg
 	int  size;
 } error_msg_t;
 
-size_t _prompt(char **, size_t *);
-void error_handler(char *, int);
+/**
+ * struct cmd - An structure for each command
+ *
+ * @eoc: char to mark the end of command.
+ * @command: command with arguments.
+ * @next: pointer to next command.
+ */
+typedef struct command_s
+{
+	char eoc;
+	char **command;
+	struct command_s *next;
+} command_t;
+
+/* Shell functions */
+command_t *_prompt(void);
 int _fork(size_t, char **);
-char *read_line(void);
 int _stat(char *);
-size_t _strlen(char *str);
 int _exec(char *, char *const[]);
-size_t _parser_cmd(char *, char **, size_t *);
+
+/* Utilities */
+char *read_line(void);
+size_t _strlen(char *str);
+command_t *_parser_cmd(char *);
 size_t _parser_arg(char *, char **, size_t *);
 void print_char_pointer_arr(char **, size_t);
+
+/* Error handler */
+void error_handler(int);
+void error_handler_set_default(char *);
 
 #endif

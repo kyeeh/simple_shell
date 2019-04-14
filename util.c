@@ -13,7 +13,7 @@ size_t _strlen(char *str)
 }
 
 /**
- * strlen - return the length of a string
+ * strlen - print String Array
  *
  */
 void print_char_pointer_arr(char *values[], size_t length)

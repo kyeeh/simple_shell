@@ -22,30 +22,35 @@ size_t _parser(char *cmd_line, const char *sep, char **tokens, size_t *max_token
     }
 	return (j); 
 }
-
 /**
- * _parser_cmd - Parse commands from prompt.
- * @cmd_line: command line to be parsed fomr prompt.
- * @in_size: command line buffer size.
- * @cmds: String array to storage commands.
- * @out_size: Commands string array (cmds) size.
+ * _parser_cmd - Parses a simple command from prompt.
+ * @cmd_line: command line to be parsed from prompt.
  */
-size_t _parser_cmd(char *cmd_line, char *cmds[], size_t *out_size)
+command_t *_parser_cmd(char *cmd_line)
 {
-	size_t i, j = 0, cmd_sep_num = 1;
-	const char *cmd_sep[] = {";","\n"};
+	size_t i = 0;
+	char *cmd_str = NULL;
+	/* const char *cmd_sep = ";|"; */
+	const char *cmd_sep = " ";
+	command_t *cmd_node = NULL;
 
-	for (i = 0; i < cmd_sep_num; i++)
+	cmd_str = strtok(cmd_line, cmd_sep); /* get the first token */
+	if (cmd_str)
 	{
-		cmds[j] = strtok(cmd_line, cmd_sep[i]); /* get the first token */
-		printf( "Token(%zu) %s\n", j, cmds[j]);
-		while(cmds[j] != NULL && j < *out_size) {/* walk through other tokens */
-			cmds[j] == NULL ? j : j++;
-			cmds[j] = strtok(NULL, cmd_sep[i]);
-			printf( "Token(%zu) %s\n", j, cmds[j]);
+		cmd_node = malloc(sizeof(command_t));
+		if (!cmd_node)
+			error_handler("./shell", 104);
+		cmd_node->command[i] = cmd_str;
+		cmd_node->next = NULL;
+		printf( "Token(%zu) %s\n", i, cmd_node->command[0]);
+		while(cmd_str != NULL) {/* walk through other tokens */
+			cmd_str == NULL ? i : i++;
+			cmd_str = strtok(NULL, cmd_sep);
+			cmd_node->command[i] = cmd_str;
+			printf( "Token(%zu) %s\n", i, cmd_node->command[i]);
 		}
 	}
-	return (j); 
+	return (cmd_node); 
 }
 
 /**
