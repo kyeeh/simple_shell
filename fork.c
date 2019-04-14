@@ -8,12 +8,11 @@
  */
 int _fork(char *myself, command_t *cmd_node)
 {
-	pid_t status, child_pid, my_pid;
+	pid_t status, child_pid;
 
 	child_pid = fork();
 	if (child_pid == -1)
 		return (0);
-	my_pid = getpid();
 	if (child_pid)
 	{
 		wait(&status);

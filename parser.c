@@ -7,13 +7,13 @@
  */
 command_t *_parser_cmd(char *myself, char *cmd_line)
 {
-	unsigned int i = 0;
+	size_t i = 0;
 	char *cmd_str = NULL;
 	/* const char *cmd_sep = ";|"; */
-	const char *cmd_sep = " ";
+	const char *arg_sep = " ";
 	command_t *cmd_node = NULL;
 
-	cmd_str = strtok(cmd_line, cmd_sep); /* get the first token */
+	cmd_str = strtok(cmd_line, arg_sep); /* get the first token */
 	if (cmd_str)
 	{
 		cmd_node = malloc(sizeof(command_t));
@@ -24,7 +24,7 @@ command_t *_parser_cmd(char *myself, char *cmd_line)
 		while (cmd_str != NULL)
 		{ /* walk through other tokens */
 			cmd_str == NULL ? i : i++;
-			cmd_str = strtok(NULL, cmd_sep);
+			cmd_str = strtok(NULL, arg_sep);
 			cmd_node->command[i] = cmd_str;
 		}
 	}

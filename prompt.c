@@ -18,7 +18,7 @@ command_t **_prompt(char *myself, char *shell_phrase)
 		write(STDOUT_FILENO, shell_phrase, char_amount);
 	/* ToDO: Insert new _getline */
 	char_amount = getline(&cmd_line, &buff_size, stdin);
-	if (*cmd_line == '\n' || char_amount < 0)
+	if (char_amount < 0)
 	{
 		fflush(stdin);
 		cmd_list = NULL;
