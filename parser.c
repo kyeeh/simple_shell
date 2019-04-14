@@ -8,7 +8,7 @@
  */
 size_t _parser(char *cmd_line, const char *sep, char **tokens, size_t *max_tokens)
 {
-	size_t j = 0;
+	unsigned int j = 0;
     /*const char *cmd_sep[] = {";", "|", "&&", "||"};
 	char *cmd_sep = ";|&&";
 	char cmd_sep[] = {'"', "'", "`", '\\', '*', "&", "#"}; */
