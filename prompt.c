@@ -5,7 +5,7 @@
  *
  * Return: NULL or pointer to command list.
  */
-command_t **_prompt(char *shell_phrase)
+command_t **_prompt(char *myself, char *shell_phrase)
 {
 	size_t buff_size = 0;
 	ssize_t char_amount = 0;
@@ -25,7 +25,7 @@ command_t **_prompt(char *shell_phrase)
 	}
 	else
 	{
-		*cmd_list = _parser_cmd(cmd_line);
+		*cmd_list = _parser_cmd(myself, cmd_line);
 		free(cmd_line);
 		cmd_line = NULL;
 		return (cmd_list);
