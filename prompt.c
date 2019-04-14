@@ -1,21 +1,35 @@
 #include "shell.h"
 /**
- * _prompt - prompt actions
- * @cmds: String array to storage commands
- * cmd_size: size of cmds.
+ * _prompt - write prompt and read a command line.
+ * @shell_phrase: String for prompt init.
+ *
+ * Return: NULL or pointer to command list.
  */
-char * _prompt(char *cmds[], size_t *cmd_size)
+
+command_t **_prompt(char *shell_phrase)
 {
-  size_t buff_size = 1024;
-    char cmd_line[1024];
-    char *cmd_ptr = NULL;
+	size_t buff_size = 0;
+	ssize_t char_amount = 0;
+	char *cmd_line = NULL;
+	command_t *cmd_node = NULL;
+	command_t **cmd_list = &cmd_node; /* Command List */
 
-    (void)cmd_line;
-    (void)cmds;
-    (void)cmd_size;
-	write(STDOUT_FILENO, "#cisfun$ ", 9);
-	getline(&cmd_ptr, &buff_size, stdin); /* Insert new _getline */
-
-	return (cmd_ptr);
-	/* return (_parser_cmd(cmd_line, cmds, cmd_size)); */
+	char_amount = _strlen(shell_phrase);
+	if (shell_phrase)
+		write(STDOUT_FILENO, shell_phrase, char_amount);
+	/* ToDO: Insert new _getline */
+	char_amount = getline(&cmd_line, &buff_size, stdin);
+	if (*cmd_line == '\n' || char_amount < 0)
+	{
+		fflush(stdin);
+		cmd_list = NULL;
+	}
+	else
+	{
+		*cmd_list = _parser_cmd(cmd_line);
+		free(cmd_line);
+		cmd_line = NULL;
+		return (cmd_list);
+	}
+	return (NULL);
 }

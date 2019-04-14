@@ -8,14 +8,23 @@
 
 char *read_line(void)
 {
-  char *line;
-  ssize_t bufsize = 0;
-  ssize_t size = 0;
 
-  (void)size;
-  size = getline(&line, &bufsize, stdin);
+	char *shell_pharse;
+	command_t **cmd_list = NULL; /* Command List */
 
-   return (line);
+	shell_pharse = isatty(STDIN_FILENO) ? "#cisfun$ " : NULL;
+	while (1)
+	{
+		cmd_list = _prompt(shell_pharse); /* get commands from cmd_line */
+		if (cmd_list)
+		{
+			if (!_fork(av[0], *cmd_list))
+				error_handler(av[0], 102);
+		}
+		else
+			error_handler(av[0], 103);
+	}
+	return (0);
 }
 
 int main(int ac, char **av, char **env)

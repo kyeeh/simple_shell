@@ -26,8 +26,7 @@ char *_strdup(char *str)
 }
 
 /**
- * strlen - return the length of a string
- *
+ * _strlen - return the length of a string
  * @str: The string that receives.
  * Return: The count of characters in string.
  */
@@ -35,25 +34,23 @@ size_t _strlen(char *str)
 {
 	size_t i = 0;
 
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 		i++;
 	return (i);
 }
 
 /**
- * print_char_pointer_arr - return the length of a string
- * @values: The string that receives.
- * @length: The string that receives.
- * Return: The count of characters in string.
- *
+ * print_char_pointer_arr - print String Array
+ * @values: array of Strings to print.
+ * @length: array size.
  */
 void print_char_pointer_arr(char *values[], size_t length)
 {
-    size_t i;
+	unsigned int i;
 
-    for (i = 0; i < length; i++)
-        printf("A[%zu]: %s ", i, values[i]);
-    printf("\n");
+	for (i = 0; i < length; i++)
+		printf("A[%u]: %s ", i, values[i]);
+	printf("\n");
 }
 
 
