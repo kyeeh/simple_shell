@@ -38,8 +38,8 @@ typedef struct command_s
 
 /* Shell functions */
 command_t **_prompt(char *);
-int _fork(command_t *);
-int _stat(char *);
+int _fork(char *, command_t *);
+int _stat(char *, char *);
 int _exec(char **);
 
 /* Utilities */
@@ -50,7 +50,7 @@ size_t _parser_arg(char *, char **, size_t *);
 void print_char_pointer_arr(char **, size_t);
 
 /* Error handler */
-void error_handler(int);
+void error_handler(char *, int);
 void error_handler_set_default(int, char *);
 
 #endif

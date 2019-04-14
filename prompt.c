@@ -1,8 +1,7 @@
 #include "shell.h"
 /**
- * _prompt - prompt actions
- * @cmds: String array to storage commands
- * cmd_size: size of cmds.
+ * _prompt - write prompt and read a command line.
+ * @shell_phrase: String for prompt init.
  */
 command_t **_prompt(char *shell_phrase)
 {
@@ -15,9 +14,9 @@ command_t **_prompt(char *shell_phrase)
 	if (shell_phrase)
 		write(STDOUT_FILENO, shell_phrase, char_amount);
 	char_amount = getline(&cmd_line, &buff_size, stdin); /* Insert new _getline */
-	if (*cmd_line == '\n' || char_amount < 0) 
+	if (*cmd_line == '\n' || char_amount < 0)
 	{
-		free(cmd_list);
+		fflush(stdin);
 		cmd_list = NULL;
 	}
 	else
