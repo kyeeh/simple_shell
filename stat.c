@@ -17,7 +17,7 @@ int _stat(char *myself, char *cmd)
 	*	printf("char %c [%d] ", copy[i], copy[i]);
 	*	i++;
 	*} */
-	printf("DEBUG:STAT: cmd %s \n", cmd);
+	/* printf("DEBUG:STAT: cmd %s \n", cmd); */
 	if (stat(cmd, &st) == 0)
 		return (1);
 	error_handler(myself, 103);
