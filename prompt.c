@@ -34,8 +34,8 @@ command_t **_prompt(char *myself, char *shell_phrase, history_t **hist)
 	{
 		*cmd_list = _parser_cmd(myself, cmd_line);
 		/* Verify the commands */
-		/* free(cmd_line);
-		* cmd_line = NULL; */
+		/* free(cmd_line); */
+		/* cmd_line = NULL; */
 		return (cmd_list);
 	}
 	return (NULL);
