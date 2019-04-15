@@ -1,11 +1,13 @@
 #include "shell.h"
 /**
  * _prompt - write prompt and read a command line.
+ * @myself: String for prompt init.
  * @shell_phrase: String for prompt init.
+ * @hist: History head list.
  *
  * Return: NULL or pointer to command list.
  */
-command_t **_prompt(char *myself, char *shell_phrase)
+command_t **_prompt(char *myself, char *shell_phrase, history_t **hist)
 {
 	size_t buff_size = 0;
 	ssize_t char_amount = 0;
@@ -18,6 +20,11 @@ command_t **_prompt(char *myself, char *shell_phrase)
 		write(STDOUT_FILENO, shell_phrase, char_amount);
 	/* ToDO: Insert new _getline */
 	char_amount = getline(&cmd_line, &buff_size, stdin);
+	/* Insert into history here */
+	if (add_nodeint(hist, cmd_line) < 0)
+		printf("History error in add node\n"); /* Insert error here */
+	/* print_listint(*hist); */
+	printf("This is char_amount %s\n", cmd_line);
 	if (char_amount < 0)
 	{
 		fflush(stdin);

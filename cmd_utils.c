@@ -14,8 +14,8 @@ command_t *new_cmd_node(char *myself)
 	if (!cmd_node)
 		error_handler(myself, 105);
 	cmd_node->command = malloc(sizeof(char *));
-        if (!cmd_node->command)
-                error_handler(myself, 105);
+	if (!cmd_node->command)
+		error_handler(myself, 105);
 	return (cmd_node);
 }
 

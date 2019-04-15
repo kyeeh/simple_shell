@@ -4,34 +4,39 @@
  * @cmd_node: Command node pointer.
  * @myself: my own name as shell.
  * @path: path received.
+ * @env: env variables.
  *
  * Return: 1 on sucess, 0 on failure.
  */
-int _fork(char *myself, command_t *cmd_node, char *path)
+int _fork(char *myself, command_t *cmd_node, char *path, char **env)
 {
-	pid_t status, child_pid = 0, my_pid;
+	pid_t status, child_pid, my_pid;
 	char *command;
 
-	/* (void)my_pid; */
+	(void)my_pid;
+	child_pid = fork();
+
 	command = _which(path, cmd_node->command[0]);
-	/* child_pid = fork(); */
+	child_pid = fork();
+	my_pid = getpid();
 	if (child_pid == -1)
 	{
 		error_handler(myself, 102);
 		return (0);
 	}
-	my_pid = getpid();
-	printf("My pid is %u\n", my_pid);
 	printf("Command: %s\n", cmd_node->command[0]);
 	if (child_pid)
 	{
 		wait(&status);
 	}
-	else if (_stat(myself, command))
-	{
-		_exec(cmd_node->command);
-	}
 	else
-		return (-1);
+	{
+		if (_stat(myself, command))
+		{
+			_exec(command, cmd_node->command, env);
+		}
+		else
+			return (-1);
+	{
 	return (0);
 }

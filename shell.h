@@ -32,7 +32,6 @@ typedef struct error_msg
  * struct built_s - Builtings commands
  * @command: command name.
  * @f: function to call.
- * @env: Environment variables.
  *
  * Description: Longer description
  */
@@ -45,7 +44,7 @@ typedef struct built_s
 /**
  * struct history - An structure for each command readed
  *
- * @h_id: error code
+ * @id_h: error code
  * @comms: Commands
  * @prev: Previous element
  * @next: Next element
@@ -58,7 +57,6 @@ typedef struct history
 	struct history *prev;
 	struct history *next;
 } history_t;
-
 
 /**
  * struct cmd - An structure for each command
@@ -73,10 +71,10 @@ typedef struct command_s
 } command_t;
 
 /* Shell functions */
-command_t **_prompt(char *, char *);
-int _fork(char *, command_t *, char *);
+command_t **_prompt(char *, char *, history_t **);
+int _fork(char *, command_t *, char *, char **);
 int _stat(char *, char *);
-int _exec(char **);
+int _exec(char *, char **, char **);
 
 /* Utilities */
 char *read_line(void);
@@ -88,6 +86,7 @@ void print_char_pointer_arr(char **, size_t);
 int add_nodeint(history_t **head, char *str);
   char *_strdup(char *str);
 void free_listint(history_t *head);
+void print_listint(const history_t *);
 char *find_path(char **);
 char *_strstr(char *haystack, char *needle);
 void print_env();

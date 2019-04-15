@@ -14,9 +14,7 @@ command_t *_parser_cmd(char *myself, char *cmd_line)
 	const char *arg_sep = " \n";
 	command_t *cmd_node = NULL;
 
-	/* printf("Estoy en parser myself es %s\n", myself); */
 	cmd_str = strtok(cmd_line, arg_sep); /* get the first token */
-	/* printf("arg separa %s\n", arg_sep); */
 	if (cmd_str)
 	{
 		cmd_node = new_cmd_node(myself);
