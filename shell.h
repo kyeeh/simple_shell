@@ -73,7 +73,7 @@ typedef struct command_s
 } command_t;
 
 /* Shell functions */
-command_t **_prompt(char *, char *);
+command_t **_prompt(char *, char *, history_t **);
 int _fork(char *, command_t *, char *, char **);
 int _stat(char *, char *);
 int _exec(char *, char **, char **);
@@ -88,6 +88,7 @@ void print_char_pointer_arr(char **, size_t);
 int add_nodeint(history_t **head, char *str);
   char *_strdup(char *str);
 void free_listint(history_t *head);
+void print_listint(const history_t *);
 char *find_path(char **);
 char *_strstr(char *haystack, char *needle);
 void print_env();
