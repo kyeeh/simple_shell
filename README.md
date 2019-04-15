@@ -3,7 +3,6 @@
 
 ## What is Simple shell?
 
-
 This is a simple implementation of  command-line interpreter for the Unix operating system created by holberton students **Nildiert Jimenez** and **Ricardo Gutierrez**. 
 
 See [Unix Shell](https://en.wikipedia.org/wiki/Unix_shell)
@@ -38,18 +37,24 @@ See [Unix Shell](https://en.wikipedia.org/wiki/Unix_shell)
 
 ----
 ## Files incluided in this repository
-
-File | Description
+File |  Description
 ------------ | -------------
-error_handler | *Description*
-exec.c | *Description*
-fork.c | *Description*
-prompt.c | *Description*
-read_line.c | *Description*
-shell.c | *Description*
-shell.h | *Description*
-stat.c | *Description*
-util.c | *Description*
+README.md | README file
+cmd_utils.c |  Functions of previous projects
+error_handler.c | Management errors
+exec.c | File that execute the functions of the OS system
+exec_buil_comm.c | File that execute the builtins functions
+exit.c | Function of exit
+find_path.c | Find the path 
+fork.c | Create a new proccess
+history.c | Create a history and add nodes
+man_1_simple_shell | manpage
+parser.c | Split the input
+prompt.c | Receives the string of characters
+shell.c | Content the main function
+shell.h | Header file
+stat.c | Verify the status of a command in the system
+utils.c | Strings functions
 
 ----
 ## Quick start
@@ -68,8 +73,7 @@ To start, write the following:
     ./simple_shell
 
 ----
-## Builtin functions
-
+## Basic operation
 When the shell reads the entry, it proceeds through a sequence of operations.
 
     ls -la
@@ -104,13 +108,7 @@ The shell then analyzes these tokens in commands and other constructs, redirects
 ## Builtin functions
 Function | Description | Usage
 ------------ | ------------- | -------------
-cd | *Description* |     code (4 spaces indent)
-alias | *Description* |     code (4 spaces indent)
-alias | *Description* |     code (4 spaces indent)
-env | *Description* |     code (4 spaces indent)
-setenv | *Description* |     code (4 spaces indent)
-unsetenv | *Description* |     code (4 spaces indent)
-exit | *Description* |     code (4 spaces indent)
+env | Show the environment variables |     To show the environment variables
 
 ----
 ## Examples
@@ -133,17 +131,6 @@ exit | *Description* |     code (4 spaces indent)
     sdfsdfsdfsdf sdfsdfsdfsdf sdfsdfsdfsdf 
     sdfsdfsdfsdf sdfsdfsdfsdf sdfsdfsdfsdf 
     sdfsdfsdfsdf 
-
-*emphasis*
-
-**strong**
-
-* list
-
->block quote
-
-    code (4 spaces indent)
-[links](https://wikipedia.org)
 
 ----
 ## changelog
