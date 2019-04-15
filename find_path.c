@@ -59,25 +59,25 @@ void print_env(char **environ)
  * @p_rec: Path received
  * @first_arg: Command
  *
+ * Return: string with find path or NULL in failure.
  */
 
-void _which(char *p_rec, char *first_arg)
+char *_which(char *p_rec, char *first_arg)
 {
 	char *path, *arg, *path_tok, *command;
 	unsigned int size;
 
 	size = _strlen(first_arg);
-
 	path = _strdup(p_rec);
-	arg = _strdup(string_nconcat("/", first_arg, size - 1));
+	arg = _strdup(string_nconcat("/", first_arg, size));
 	size = _strlen(arg);
-
 	path_tok = strtok(path, ":");
 	while (path_tok != NULL)
 	{
 		command = string_nconcat(path_tok, arg, size);
 		if (access(command, F_OK) == 0)
-			printf(":DEBUG: which %s status %d\n", command, access(command, F_OK));
+			return (command);
 		path_tok = strtok(NULL, ":");
 	}
+	return (NULL);
 }
