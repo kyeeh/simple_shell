@@ -17,6 +17,3 @@ shell
 # Unignore all dirs
 !*/
 
-*~
-test
-hsh
