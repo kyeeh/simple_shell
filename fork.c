@@ -9,15 +9,12 @@
  */
 int _fork(char *myself, command_t *cmd_node, char *path)
 {
-	pid_t status, child_pid, my_pid;
+	pid_t status, child_pid = 0, my_pid;
 	char *command;
 
-	printf(":DEBUUG: path %s\n",path);
-
-	(void)my_pid;
-	child_pid = fork();
-
+	/* (void)my_pid; */
 	command = _which(path, cmd_node->command[0]);
+	/* child_pid = fork(); */
 	if (child_pid == -1)
 	{
 		error_handler(myself, 102);

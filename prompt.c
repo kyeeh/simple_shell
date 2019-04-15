@@ -26,8 +26,8 @@ command_t **_prompt(char *myself, char *shell_phrase)
 	else
 	{
 		*cmd_list = _parser_cmd(myself, cmd_line);
-		/* free(cmd_line);
-		* cmd_line = NULL; */
+		free(cmd_line);
+		cmd_line = NULL;
 		return (cmd_list);
 	}
 	return (NULL);

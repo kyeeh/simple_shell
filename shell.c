@@ -11,7 +11,7 @@ int main(int ac, char **av, char **env)
 {
 	char *shell_pharse;
 	command_t **cmd_list = NULL;/* Command List */
-	char *path;
+	char *path = NULL;
 
 	path = find_path(env);
 	ac++;
