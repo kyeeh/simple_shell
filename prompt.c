@@ -7,7 +7,7 @@
  *
  * Return: NULL or pointer to command list.
  */
-command_t **_prompt(char *myself, char *shell_phrase, history_t **hist)
+command_t **_prompt(char *myself, char *argv, history_t **hist)
 {
 	size_t buff_size = 0;
 	ssize_t char_amount = 0;
@@ -15,11 +15,13 @@ command_t **_prompt(char *myself, char *shell_phrase, history_t **hist)
 	command_t *cmd_node = NULL;
 	command_t **cmd_list = &cmd_node; /* Command List */
 
-	char_amount = _strlen(shell_phrase);
-	if (shell_phrase)
-		write(STDOUT_FILENO, shell_phrase, char_amount);
-	/* ToDO: Insert new _getline */
-	char_amount = getline(&cmd_line, &buff_size, stdin);
+	if (isatty(STDIN_FILENO))
+		/* write(STDOUT_FILENO, shell_phrase, char_amount); */
+		/* ToDO: Insert new _getline */
+		char_amount = getline(&cmd_line, &buff_size, stdin);
+	else
+		/* Take command from **argv */
+		cmd_line = argv;
 	fflush(stdin);
 	/* Insert into history here */
 	if (add_nodeint(hist, cmd_line) < 0)
