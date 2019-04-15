@@ -73,7 +73,7 @@ typedef struct command_s
 } command_t;
 
 /* Shell functions */
-command_t **_prompt(char *, char *);
+command_t **_prompt(char *, char *, history_t **);
 int _fork(char *, command_t *, char *, char **);
 int _stat(char *, char *);
 int _exec(char *, char **, char **);
