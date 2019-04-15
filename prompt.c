@@ -25,7 +25,6 @@ command_t **_prompt(char *myself, char *shell_phrase, history_t **hist)
 	if ((history_status = add_nodeint(hist, cmd_line)) < 0)
 		printf("History error in add node\n"); /* Insert error here */
 	/* print_listint(*hist); */
-/****            ***********/
 	printf("This is char_amount %s\n", cmd_line);
 	if (char_amount < 0)
 	{
