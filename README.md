@@ -37,7 +37,8 @@ See [Unix Shell](https://en.wikipedia.org/wiki/Unix_shell)
 
 ----
 ## Files incluided in this repository
-
+File |  Description
+------------ | -------------
 README.md | README file
 cmd_utils.c |  Functions of previous projects
 error_handler.c | Management errors
@@ -107,7 +108,7 @@ The shell then analyzes these tokens in commands and other constructs, redirects
 ## Builtin functions
 Function | Description | Usage
 ------------ | ------------- | -------------
-env | Show the environment variables |     To show the environment functions
+env | Show the environment variables |     To show the environment variables
 
 ----
 ## Examples
