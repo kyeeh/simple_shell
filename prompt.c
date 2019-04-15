@@ -20,22 +20,19 @@ command_t **_prompt(char *myself, char *shell_phrase, history_t **hist)
 		write(STDOUT_FILENO, shell_phrase, char_amount);
 	/* ToDO: Insert new _getline */
 	char_amount = getline(&cmd_line, &buff_size, stdin);
-/* Insert into history here */
+	fflush(stdin);
+	/* Insert into history here */
 	if (add_nodeint(hist, cmd_line) < 0)
 		printf("History error in add node\n"); /* Insert error here */
 	/* print_listint(*hist); */
 	printf("This is char_amount %s\n", cmd_line);
 	if (char_amount < 0)
-	{
-		fflush(stdin);
 		cmd_list = NULL;
-	}
 	else
 	{
 		*cmd_list = _parser_cmd(myself, cmd_line);
-		/* Verify the commands */
-		/* free(cmd_line); */
-		/* cmd_line = NULL; */
+		free(cmd_line);
+		cmd_line = NULL;
 		return (cmd_list);
 	}
 	return (NULL);

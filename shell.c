@@ -11,7 +11,7 @@ int main(int ac, char **av, char **env)
 {
 	char *shell_pharse;
 	command_t **cmd_list = NULL;/* Command List */
-	char *path;
+	char *path = NULL;
 	history_t **history = malloc(sizeof(history_t));
 
 	if (history == NULL)
@@ -20,7 +20,7 @@ int main(int ac, char **av, char **env)
 	}
 	path = find_path(env);
 	ac++;
-	shell_pharse = isatty(STDIN_FILENO) ? "#cisfun$ " : NULL;
+	shell_pharse = isatty(STDIN_FILENO) ? "> " : NULL;
 	while (1)
 	{
 		cmd_list = _prompt(av[0], shell_pharse, history); /* get commands from cmd_line */
