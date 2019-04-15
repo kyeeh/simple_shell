@@ -3,7 +3,6 @@
 
 ## What is Simple shell?
 
-
 This is a simple implementation of  command-line interpreter for the Unix operating system created by holberton students **Nildiert Jimenez** and **Ricardo Gutierrez**. 
 
 See [Unix Shell](https://en.wikipedia.org/wiki/Unix_shell)
@@ -108,13 +107,7 @@ The shell then analyzes these tokens in commands and other constructs, redirects
 ## Builtin functions
 Function | Description | Usage
 ------------ | ------------- | -------------
-cd | *Description* |     code (4 spaces indent)
-alias | *Description* |     code (4 spaces indent)
-alias | *Description* |     code (4 spaces indent)
-env | *Description* |     code (4 spaces indent)
-setenv | *Description* |     code (4 spaces indent)
-unsetenv | *Description* |     code (4 spaces indent)
-exit | *Description* |     code (4 spaces indent)
+env | Show the environment variables |     To show the environment functions
 
 ----
 ## Examples
@@ -137,17 +130,6 @@ exit | *Description* |     code (4 spaces indent)
     sdfsdfsdfsdf sdfsdfsdfsdf sdfsdfsdfsdf 
     sdfsdfsdfsdf sdfsdfsdfsdf sdfsdfsdfsdf 
     sdfsdfsdfsdf 
-
-*emphasis*
-
-**strong**
-
-* list
-
->block quote
-
-    code (4 spaces indent)
-[links](https://wikipedia.org)
 
 ----
 ## changelog
