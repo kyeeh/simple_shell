@@ -8,11 +8,9 @@
 int _exec(char **cmd)
 {
 
-	printf("Before execve\n");
 	if (execve(cmd[0], cmd, NULL) == -1)
 	{
 		perror("Error:");
 	}
-	printf("After execve\n");
 	return (0);
 }
