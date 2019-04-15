@@ -1,9 +1,10 @@
 #include "shell.h"
 /**
- * ver_buil_comm - Execute the builtins commands.
+ * verif_built_comm - Execute the builtins commands.
  * @str: First arg.
  * @env: Environment variables.
  *
+ * Return: 0 or -1 in failure.
  */
 
 int verif_built_comm(char *str, char **env)
