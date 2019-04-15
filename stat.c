@@ -1,4 +1,3 @@
-
 #include "shell.h"
 /**
  * _stat - stat of a file.
@@ -10,8 +9,15 @@
 int _stat(char *myself, char *cmd)
 {
 	struct stat st;
+	char *copy = cmd;
+	int i = 0;
 
-	printf("DEBUG: Stat for %s\n", cmd);
+	while (copy[i])
+	{
+		printf("char %c [%d] ", copy[i], copy[i]);
+		i++;
+	}
+	printf("\nDEBUG:: cmd %s \n", cmd);
 	if (stat(cmd, &st) == 0)
 		return (1);
 	error_handler(myself, 103);

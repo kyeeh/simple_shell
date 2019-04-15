@@ -13,9 +13,10 @@ void error_handler(char *myself, int msg_code)
 		{00, "Error unknown", 14},
 		{100, "Error reading from Prompt - Zero tokens", 40},
 		{101, "No such file or directory", 26},
-		{102, "Error creating child process", 28},
+		{102, "FATAL ERROR: UNABLE TO CREATE CHILD PROCESS", 44},
 		{103, "command not found", 17},
-		{104, "FATAL ERROR: NO MEMORY AVAILABLE.", 17},
+		{104, "FATAL ERROR: NO MEMORY AVAILABLE.", 33},
+		{105, "FATAL ERROR: UNABLE TO CREATE CMD LIST", 38},
 		{999, "", 0} /* Error Array end condition*/
 	};
 
