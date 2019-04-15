@@ -24,19 +24,19 @@ int _fork(char *myself, command_t *cmd_node, char *path, char **env)
 		error_handler(myself, 102);
 		return (0);
 	}
-	printf("Command: %s\n", cmd_node->command[0]);
-	if (child_pid)
+	printf("Command: %s\n", command);
+	if (child_pid > 0) /* Parent process */
 	{
 		wait(&status);
 	}
-	else
+	else /* Child process */
 	{
 		if (_stat(myself, command))
 		{
 			_exec(command, cmd_node->command, env);
 		}
 		else
-			return (-1);
-	{
+			return (-1); /* Ask for custom process */
+	}
 	return (0);
 }

@@ -20,7 +20,7 @@ int main(int ac, char **av, char **env)
 	}
 	path = find_path(env);
 	ac++;
-	shell_pharse = isatty(STDIN_FILENO) ? "#cisfun$ " : NULL;
+	shell_pharse = isatty(STDIN_FILENO) ? "> " : NULL;
 	while (1)
 	{
 		cmd_list = _prompt(av[0], shell_pharse, history); /* get commands from cmd_line */

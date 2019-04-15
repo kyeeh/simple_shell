@@ -1,4 +1,4 @@
-*.swp
+*.c.swp
 shell
 *.dSYM
 .DS_Store
@@ -8,12 +8,5 @@ shell
 *printf*
 .gitignore
 
-# Ignore all
-*
 
-# Unignore all with extensions
-!*.*
-
-# Unignore all dirs
-!*/
 
