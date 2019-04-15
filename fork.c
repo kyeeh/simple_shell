@@ -30,7 +30,7 @@ int _fork(char *myself, command_t *cmd_node, char *path, char **env)
 	}
 	else if (_stat(myself, command))
 	{
-		_exec(command ,cmd_node->command, env);
+		_exec(command, cmd_node->command, env);
 	}
 	else
 		return (-1);

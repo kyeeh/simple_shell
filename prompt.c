@@ -14,7 +14,6 @@ command_t **_prompt(char *myself, char *shell_phrase, history_t **hist)
 	char *cmd_line = NULL;
 	command_t *cmd_node = NULL;
 	command_t **cmd_list = &cmd_node; /* Command List */
-	int history_status;
 
 	char_amount = _strlen(shell_phrase);
 	if (shell_phrase)
@@ -22,10 +21,9 @@ command_t **_prompt(char *myself, char *shell_phrase, history_t **hist)
 	/* ToDO: Insert new _getline */
 	char_amount = getline(&cmd_line, &buff_size, stdin);
 /* Insert into history here */
-	if ((history_status = add_nodeint(hist, cmd_line)) < 0)
+	if (add_nodeint(hist, cmd_line) < 0)
 		printf("History error in add node\n"); /* Insert error here */
 	/* print_listint(*hist); */
-/****            ***********/
 	printf("This is char_amount %s\n", cmd_line);
 	if (char_amount < 0)
 	{
@@ -36,8 +34,8 @@ command_t **_prompt(char *myself, char *shell_phrase, history_t **hist)
 	{
 		*cmd_list = _parser_cmd(myself, cmd_line);
 		/* Verify the commands */
-		/* free(cmd_line);
-		* cmd_line = NULL; */
+		/* free(cmd_line); */
+		/* cmd_line = NULL; */
 		return (cmd_list);
 	}
 	return (NULL);

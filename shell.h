@@ -32,7 +32,6 @@ typedef struct error_msg
  * struct built_s - Builtings commands
  * @command: command name.
  * @f: function to call.
- * @env: Environment variables.
  *
  * Description: Longer description
  */
@@ -45,7 +44,7 @@ typedef struct built_s
 /**
  * struct history - An structure for each command readed
  *
- * @h_id: error code
+ * @id_h: error code
  * @comms: Commands
  * @prev: Previous element
  * @next: Next element
@@ -58,7 +57,6 @@ typedef struct history
 	struct history *prev;
 	struct history *next;
 } history_t;
-
 
 /**
  * struct cmd - An structure for each command
