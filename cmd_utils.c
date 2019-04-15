@@ -12,7 +12,10 @@ command_t *new_cmd_node(char *myself)
 
 	cmd_node = malloc(sizeof(command_t));
 	if (!cmd_node)
-		error_handler(myself, 104);
+		error_handler(myself, 105);
+	cmd_node->command = malloc(sizeof(char *));
+        if (!cmd_node->command)
+                error_handler(myself, 105);
 	return (cmd_node);
 }
 
@@ -28,8 +31,7 @@ command_t *new_cmd_node(char *myself)
  */
 void add_tok_to_cmd(char *sh, command_t *cmd_node, size_t index, char *token)
 {
-	cmd_node->command[index] = _strdup(token);
+	cmd_node->command[index] = token;
 	if (!cmd_node->command[index])
-		error_handler(sh, 104);
-	cmd_node->command[index] = token;	
+		error_handler(sh, 105);
 }

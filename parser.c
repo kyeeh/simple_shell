@@ -25,7 +25,8 @@ command_t *_parser_cmd(char *myself, char *cmd_line)
 		{ /* walk through other tokens */
 			cmd_str == NULL ? i : i++;
 			cmd_str = strtok(NULL, arg_sep);
-			cmd_node->command[i] = cmd_str;
+			if (cmd_str)
+				add_tok_to_cmd(myself, cmd_node, i, cmd_str);
 		}
 	}
 	return (cmd_node);

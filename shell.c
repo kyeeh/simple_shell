@@ -18,7 +18,7 @@ int main(int ac, char **av)
 		cmd_list = _prompt(av[0], shell_pharse); /* get commands from cmd_line */
 		if (cmd_list)
 		{
-			if (!_fork(av[0], *cmd_list))
+			if (_fork(av[0], *cmd_list))
 				error_handler(av[0], 102);
 		}
 		else
