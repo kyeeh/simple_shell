@@ -78,7 +78,7 @@ void print_listint(const history_t *h)
 {
 	while (h)
 	{
-		/* printf("%s", h->comms); */
+		printf(":DEBUGG history :%s\n", h->comms);
 		h = h->next;
 	}
 }
