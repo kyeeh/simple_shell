@@ -3,14 +3,21 @@
  * _fork - fork code to execute a new command
  * @cmd_node: Command node pointer.
  * @myself: my own name as shell.
+ * @path: path received.
  *
  * Return: 1 on sucess, 0 on failure.
  */
-int _fork(char *myself, command_t *cmd_node)
+int _fork(char *myself, command_t *cmd_node, char *path)
 {
 	pid_t status, child_pid, my_pid;
+	char *command;
 
+	printf(":DEBUUG: path %s\n",path);
+
+	(void)my_pid;
 	child_pid = fork();
+
+	command = _which(path, cmd_node->command[0]);
 	if (child_pid == -1)
 	{
 		error_handler(myself, 102);
@@ -23,7 +30,7 @@ int _fork(char *myself, command_t *cmd_node)
 	{
 		wait(&status);
 	}
-	else if (_stat(myself, cmd_node->command[0]))
+	else if (_stat(myself, command))
 	{
 		_exec(cmd_node->command);
 	}

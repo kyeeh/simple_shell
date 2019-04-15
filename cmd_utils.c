@@ -31,7 +31,8 @@ command_t *new_cmd_node(char *myself)
  */
 void add_tok_to_cmd(char *sh, command_t *cmd_node, size_t index, char *token)
 {
-	cmd_node->command[index] = token;
+	free(cmd_node->command[index]);
+	cmd_node->command[index] = _strdup(token);
 	if (!cmd_node->command[index])
 		error_handler(sh, 105);
 }

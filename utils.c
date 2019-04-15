@@ -53,91 +53,6 @@ void print_char_pointer_arr(char *values[], size_t length)
 	printf("\n");
 }
 
-
-/**
- * *add_nodeint - Add node in the begin67ning
- * @head: The pointer of the history list.
- * @head: The pointer of the list.
- *
- * Return: On success 1
- */
-
-int add_nodeint(history_t **head, char *str)
-{
-	history_t *new = malloc(sizeof(head));
-	history_t *copy = *head;
-
-	if (!new)
-	{
-		free_listint(*head);
-		return(-1);
-	}
-
-	new->comms = _strdup(str);
-	/* printf("DEBUG: Address comms %p\n", (void*)&new->comms);  */
-	/*  printf("DEBUG: Address new %p\n", (void*)&new);  */
-	/*  printf("DEBUG: Address new next  %p\n", (void*)&new->next);  */
-	/*  printf("DEBUG: Address new prev %p\n", (void*)&new->prev);  */
-	if (new->comms == NULL)
-	{
-		free_listint(*head);
-		return (-1);
-	}
-	new->prev = NULL;
-	new->next = NULL;
-	if (!*head)
-	{
-		*head = new;
-	}
-	else
-	{
-		new->next = copy;
-		*head = new;
-	}
-	return(1);
-}
-
-/**
- * free_listint - Print the list of a single list
- * @head: The pointer of the list
- *
- * Return: The number of elements in the list
- */
-
-
-void free_listint(history_t *head)
-{
-	history_t *delete;
-
-	if (!head)
-		return;
-	while (head)
-	{
-		delete = head->next;
-		free(head->comms);
-		free(head->prev);
-		free(head);
-		head = delete;
-	}
-	free(delete);
-}
-
-/**
- * print_listint - Print the list of a single list
- * @h: The pointer of the list
- *
- * Return: The number of elements in the list
- */
-
-void print_listint(const history_t *h)
-{
-	while (h)
-	{
-		/* printf("%s", h->comms); */
-		h = h->next;
-	}
-}
-
 /**
  * *string_nconcat - Function that concatenates two strings
  * @s1: The first string that receives
@@ -147,6 +62,7 @@ void print_listint(const history_t *h)
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
+
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	int i = 0, j = 0, len_s2 = 0;

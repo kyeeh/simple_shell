@@ -3,14 +3,17 @@
  * main - Simple Shell
  * @ac: Argument counter.
  * @av: Argument values.
+ * @env: Environment variables.
  *
  * Return: 0 or -1 in failure.
  */
-int main(int ac, char **av)
+int main(int ac, char **av, char **env)
 {
 	char *shell_pharse;
-	command_t **cmd_list = NULL; /* Command List */
+	command_t **cmd_list = NULL;/* Command List */
+	char *path;
 
+	path = find_path(env);
 	ac++;
 	shell_pharse = isatty(STDIN_FILENO) ? "#cisfun$ " : NULL;
 	while (1)
@@ -18,7 +21,7 @@ int main(int ac, char **av)
 		cmd_list = _prompt(av[0], shell_pharse); /* get commands from cmd_line */
 		if (cmd_list)
 		{
-			if (_fork(av[0], *cmd_list))
+			if (_fork(av[0], *cmd_list, path))
 				error_handler(av[0], 102);
 		}
 		else
