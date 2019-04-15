@@ -39,17 +39,22 @@ See [Unix Shell](https://en.wikipedia.org/wiki/Unix_shell)
 ----
 ## Files incluided in this repository
 
-File | Description
------------- | -------------
-error_handler | *Description*
-exec.c | *Description*
-fork.c | *Description*
-prompt.c | *Description*
-read_line.c | *Description*
-shell.c | *Description*
-shell.h | *Description*
-stat.c | *Description*
-util.c | *Description*
+README.md | README file
+cmd_utils.c |  Functions of previous projects
+error_handler.c | Management errors
+exec.c | File that execute the functions of the OS system
+exec_buil_comm.c | File that execute the builtins functions
+exit.c | Function of exit
+find_path.c | Find the path 
+fork.c | Create a new proccess
+history.c | Create a history and add nodes
+man_1_simple_shell | manpage
+parser.c | Split the input
+prompt.c | Receives the string of characters
+shell.c | Content the main function
+shell.h | Header file
+stat.c | Verify the status of a command in the system
+utils.c | Strings functions
 
 ----
 ## Quick start
