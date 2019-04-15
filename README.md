@@ -73,8 +73,7 @@ To start, write the following:
     ./simple_shell
 
 ----
-## Builtin functions
-
+## Basic operation
 When the shell reads the entry, it proceeds through a sequence of operations.
 
     ls -la
