@@ -17,22 +17,26 @@ int _fork(char *myself, command_t *cmd_node, char *path, char **env)
 	child_pid = fork();
 
 	command = _which(path, cmd_node->command[0]);
+	child_pid = fork();
+	my_pid = getpid();
 	if (child_pid == -1)
 	{
 		error_handler(myself, 102);
 		return (0);
 	}
-	my_pid = getpid();
-	printf("Command: %s\n", cmd_node->command[0]);
-	if (child_pid)
+	printf("Command: %s\n", command);
+	if (child_pid > 0) /* Parent process */
 	{
 		wait(&status);
 	}
-	else if (_stat(myself, command))
+	else /* Child process */
 	{
-		_exec(command, cmd_node->command, env);
+		if (_stat(myself, command))
+		{
+			_exec(command, cmd_node->command, env);
+		}
+		else
+			return (-1); /* Ask for custom process */
 	}
-	else
-		return (-1);
 	return (0);
 }
