@@ -74,9 +74,9 @@ typedef struct command_s
 
 /* Shell functions */
 command_t **_prompt(char *, char *);
-int _fork(char *, command_t *, char *);
+int _fork(char *, command_t *, char *, char **);
 int _stat(char *, char *);
-int _exec(char **);
+int _exec(char *, char **, char **);
 
 /* Utilities */
 char *read_line(void);
