@@ -1,41 +1,42 @@
 #include "shell.h"
 /**
- * main - fork to execute new processes
+ * _fork - fork code to execute a new command
+ * @cmd_node: Command node pointer.
+ * @myself: my own name as shell.
+ * @path: path received.
+ * @env: env variables.
  *
- * Return: Always 0.
+ * Return: 1 on sucess, 0 on failure.
  */
-int _fork(size_t ac, char **av)
+int _fork(char *myself, command_t *cmd_node, char *path, char **env)
 {
-	size_t i;
 	pid_t status, child_pid, my_pid;
+	char *command;
 
-	printf("DEBUG: Commands amount: %zu\n", ac);
-	for (i = 0; i < ac; i++)
+	(void)my_pid;
+	child_pid = fork();
+
+	command = _which(path, cmd_node->command[0]);
+	child_pid = fork();
+	my_pid = getpid();
+	if (child_pid == -1)
 	{
-		child_pid = fork();
-		if (child_pid == -1)
-			return (0);
-		my_pid = getpid();
-		printf("My pid is %d\n", my_pid);
-		if (child_pid)
+		error_handler(myself, 102);
+		return (0);
+	}
+	printf("Command: %s\n", command);
+	if (child_pid > 0) /* Parent process */
+	{
+		wait(&status);
+	}
+	else /* Child process */
+	{
+		if (_stat(myself, command))
 		{
-			printf("DEBUG: Parent Process for shell\n\n");
-			wait(&status);
+			_exec(command, cmd_node->command, env);
 		}
 		else
-		{
-			printf("DEBUG FORK.C: Child Process for %s(%zu)\n\n", av[i], ac);
-			//sleep(1);
-			if (_stat(av[i]))
-			{
-				// ToDO: split command and params
-				av[0] = "/bin/ls"; /* Test values */
-				av[1] =  NULL; 
-				_exec(av[i], av);
-			}
-			else
-				return (0);
-		}
+			return (-1); /* Ask for custom process */
 	}
-	return (1);
+	return (0);
 }

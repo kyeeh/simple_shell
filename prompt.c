@@ -1,27 +1,39 @@
 #include "shell.h"
 /**
- * _prompt - prompt actions
+ * _prompt - write prompt and read a command line.
+ * @myself: String for prompt init.
+ * @shell_phrase: String for prompt init.
+ * @hist: History head list.
+ *
+ * Return: NULL or pointer to command list.
  */
-size_t _prompt(char *cmd_line, size_t in_size, char **cmds, size_t out_size)
+command_t **_prompt(char *myself, char *shell_phrase, history_t **hist)
 {
-	size_t i, j = 0, cmd_sep_num = 1;
-	//const char *cmd_sep[] = {";", "|", "&&", "||"};
-	const char *cmd_sep[] = {"\n" };
-	// char *cmd_sep = ";|&&";
-	// char cmd_sep[] = {'"', "'", "`", '\\', '*', "&", "#"};
+	size_t buff_size = 0;
+	ssize_t char_amount = 0;
+	char *cmd_line = NULL;
+	command_t *cmd_node = NULL;
+	command_t **cmd_list = &cmd_node; /* Command List */
 
-	write(STDOUT_FILENO, "#cisfun$ ", 9);
-	getline(&cmd_line, &in_size, stdin); /* Insert new _getline */
-	for (i = 0; i < cmd_sep_num; i++)
+	char_amount = _strlen(shell_phrase);
+	if (shell_phrase)
+		write(STDOUT_FILENO, shell_phrase, char_amount);
+	/* ToDO: Insert new _getline */
+	char_amount = getline(&cmd_line, &buff_size, stdin);
+	fflush(stdin);
+	/* Insert into history here */
+	if (add_nodeint(hist, cmd_line) < 0)
+		printf("History error in add node\n"); /* Insert error here */
+	/* print_listint(*hist); */
+	printf("This is char_amount %s\n", cmd_line);
+	if (char_amount < 0)
+		cmd_list = NULL;
+	else
 	{
-		cmds[j] = strtok(cmd_line, cmd_sep[i]); /* get the first token */
-		printf( "Token(%zu) %s\n", j, cmds[j]);
-		while(cmds[j] != NULL && j < out_size) {/* walk through other tokens */
-			cmds[j] == NULL ? j : j++;
-			cmds[j] = strtok(NULL, cmd_sep[i]);
-			printf( "Token(%zu) %s\n", j, cmds[j]);
-			
-		}
+		*cmd_list = _parser_cmd(myself, cmd_line);
+		free(cmd_line);
+		cmd_line = NULL;
+		return (cmd_list);
 	}
-	return (j); 
+	return (NULL);
 }

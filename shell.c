@@ -3,41 +3,34 @@
  * main - Simple Shell
  * @ac: Argument counter.
  * @av: Argument values.
+ * @env: Environment variables.
+ *
  * Return: 0 or -1 in failure.
  */
-int main(int ac, char **av)
+int main(int ac, char **av, char **env)
 {
-	size_t cmd_amount, buff_size = 1024, size = 0, cmd_size = 512;
-	char cmd_line[buff_size];
-	char *commands[cmd_size];
-	//char *cmds_ptr = cmd_line;
+	char *shell_pharse;
+	command_t **cmd_list = NULL;/* Command List */
+	char *path = NULL;
+	history_t **history = malloc(sizeof(history_t));
 
-	while ((*(*av + size)) != '\0')
-		size += 1;
-	if (ac > 1)
+	if (history == NULL)
 	{
-    	printf("%s", *av);
+		/* Printf error in the history creation */
 	}
-	else
+	path = find_path(env);
+	ac++;
+	shell_pharse = isatty(STDIN_FILENO) ? "> " : NULL;
+	while (1)
 	{
-		while (1)
+		cmd_list = _prompt(av[0], shell_pharse, history); /* get commands from cmd_line */
+		if (cmd_list)
 		{
-			/* printf("Buffer address: %p\n", (void *)line); */
-			cmd_amount = _prompt(cmd_line, buff_size, commands, cmd_size);
-			if (cmd_amount)
-			{
-				if (_fork(cmd_amount, commands)) // just for one word commands
-				{
-					/* printf("Buffer address: %p\n", (void *)line); */
-					
-					
-				}
-				/* else
-					error_handler(*av, 102); */
-			}
-			else
-				error_handler(*av, 100);
+			if (_fork(av[0], *cmd_list, path, env))
+				error_handler(av[0], 102);
 		}
+		else
+			error_handler(av[0], 103);
 	}
 	return (0);
 }

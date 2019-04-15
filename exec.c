@@ -1,18 +1,20 @@
 #include "shell.h"
 /**
- * main - execve example
+ * _exec - execve implementation for Simple Shell.
+ * @command: Command to execute.
+ * @cmd: Command to execute.
+ * @env: Command to execute.
+
  *
  * Return: Always 0.
  */
-int _exec(char *cmd, char *const argv[])
+int _exec(char *command, char **cmd, char **env)
 {
-	//char *argv[] = {"/bin/ls", "-l", "/usr/", NULL};
 
-	printf("Before execve\n");
-	if (execve(cmd, argv, NULL) == -1)
+	(void)cmd;
+	if (execve(command, cmd, env) == -1)
 	{
 		perror("Error:");
 	}
-	printf("After execve\n");
 	return (0);
 }
