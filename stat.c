@@ -11,7 +11,7 @@ int _stat(char *myself, char *cmd)
 {
 	struct stat st;
 
-	printf("DEBUG: Stat for %s\n", cmd);
+	printf("Command stat: %s, size: %u\n", cmd, (unsigned int)strlen(cmd));
 	if (stat(cmd, &st) == 0)
 		return (1);
 	error_handler(myself, 103);

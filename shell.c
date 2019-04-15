@@ -32,7 +32,7 @@ int main(int ac, char **av, char **env)
 /*  ****************** PROVISIONAL COMMENT *************
 		if (cmd_list)
 		{
-			if (!_fork(av[0], *cmd_list))
+			if (_fork(av[0], *cmd_list))
 				error_handler(av[0], 102);
 		}
 		else

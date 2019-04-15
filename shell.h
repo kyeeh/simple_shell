@@ -101,4 +101,8 @@ int verif_built_comm(char *str, char **env);
 void error_handler(char *, int);
 void error_handler_set_default(int, char *);
 
+/* Command Utilities */
+command_t *new_cmd_node(char *);
+void add_tok_to_cmd(char *, command_t *, size_t , char *);
+
 #endif
