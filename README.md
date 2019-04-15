@@ -107,7 +107,7 @@ The shell then analyzes these tokens in commands and other constructs, redirects
 ## Builtin functions
 Function | Description | Usage
 ------------ | ------------- | -------------
-env | Show the environment variables |     To show the environment functions
+env | Show the environment variables |     To show the environment variables
 
 ----
 ## Examples
