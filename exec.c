@@ -12,7 +12,7 @@ int _exec(char *command, char **cmd, char **env)
 {
 
 	(void)cmd;
-	if (execve(command , cmd, env) == -1)
+	if (execve(command, cmd, env) == -1)
 	{
 		perror("Error:");
 	}
