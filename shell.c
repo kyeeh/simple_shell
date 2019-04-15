@@ -9,7 +9,7 @@
  */
 int main(int ac, char **av, char **env)
 {
-	char *shell_pharse;
+	/* char *shell_pharse; */
 	command_t **cmd_list = NULL;/* Command List */
 	char *path = NULL;
 	history_t **history = malloc(sizeof(history_t));
@@ -20,10 +20,10 @@ int main(int ac, char **av, char **env)
 	}
 	path = find_path(env);
 	ac++;
-	shell_pharse = isatty(STDIN_FILENO) ? "> " : NULL;
+	/* shell_pharse = isatty(STDIN_FILENO) ? "> " : NULL; */
 	while (1)
 	{
-		cmd_list = _prompt(av[0], shell_pharse, history); /* get commands from cmd_line */
+		cmd_list = _prompt(av[0], av[1], history); /* get commands from cmd_line */
 		if (cmd_list)
 		{
 			if (_fork(av[0], *cmd_list, path, env))

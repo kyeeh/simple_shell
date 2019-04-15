@@ -10,33 +10,28 @@
  */
 int _fork(char *myself, command_t *cmd_node, char *path, char **env)
 {
-	pid_t status, child_pid, my_pid;
+	pid_t status, child_pid;
 	char *command;
-
-	(void)my_pid;
-	child_pid = fork();
 
 	command = _which(path, cmd_node->command[0]);
 	child_pid = fork();
-	my_pid = getpid();
 	if (child_pid == -1)
 	{
 		error_handler(myself, 102);
 		return (0);
 	}
-	printf("Command: %s\n", command);
-	if (child_pid > 0) /* Parent process */
+	if (child_pid == 0) /* Child process */
+	{
+                if (_stat(myself, command))
+                {
+                        _exec(command, cmd_node->command, env);
+                }
+                else
+                        return (-1); /* Ask for custom process */
+	}
+	else /* Parent process */
 	{
 		wait(&status);
-	}
-	else /* Child process */
-	{
-		if (_stat(myself, command))
-		{
-			_exec(command, cmd_node->command, env);
-		}
-		else
-			return (-1); /* Ask for custom process */
 	}
 	return (0);
 }
