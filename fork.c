@@ -13,7 +13,10 @@ int _fork(char *myself, command_t *cmd_node, char *path, char **env)
 	pid_t status, child_pid;
 	char *command;
 
-	command = _which(path, cmd_node->command[0]);
+	if (*cmd_node->command[0] == '/')
+		command = cmd_node->command[0];
+	else
+		command = _which(path, cmd_node->command[0]);
 	child_pid = fork();
 	if (child_pid == -1)
 	{
