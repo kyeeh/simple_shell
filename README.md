@@ -1,5 +1,6 @@
 # Simple Shell
 ----
+!["Holberton Logo"](https://www.holbertonschool.com/holberton-logo-twitter-card.png)
 
 ## What is Simple shell?
 
