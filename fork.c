@@ -1,5 +1,4 @@
 #include "shell.h"
-]
 /**
  * _fork - fork code to execute a new command
  * @cmd_node: Command node pointer.
@@ -14,7 +13,10 @@ int _fork(char *myself, command_t *cmd_node, char *path, char **env)
 	pid_t status, child_pid;
 	char *command;
 
-	command = _which(path, cmd_node->command[0]);
+	if (*cmd_node->command[0] == '/')
+		command = cmd_node->command[0];
+	else
+		command = _which(path, cmd_node->command[0]);
 	child_pid = fork();
 	if (child_pid == -1)
 	{
@@ -33,5 +35,4 @@ int _fork(char *myself, command_t *cmd_node, char *path, char **env)
 		wait(&status);
 	}
 	return (0);
-	"(sdfkldsjflkjskl)"
 }
