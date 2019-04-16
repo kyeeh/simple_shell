@@ -39,19 +39,6 @@ size_t _strlen(char *str)
 	return (i);
 }
 
-/**
- * print_char_pointer_arr - print String Array
- * @values: array of Strings to print.
- * @length: array size.
- */
-void print_char_pointer_arr(char *values[], size_t length)
-{
-	unsigned int i;
-
-	for (i = 0; i < length; i++)
-		printf("A[%u]: %s ", i, values[i]);
-	printf("\n");
-}
 
 /**
  * *string_nconcat - Function that concatenates two strings

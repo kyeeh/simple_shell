@@ -1,5 +1,6 @@
 # Simple Shell
 ----
+!["Holberton Logo"](https://www.holbertonschool.com/holberton-logo-twitter-card.png)
 
 ## What is Simple shell?
 
@@ -114,23 +115,14 @@ env | Show the environment variables |     To show the environment variables
 ## Examples
 ### Interactive Mode
 
-    sdfsdfsdfsdf sdfsdfsdfsdf sdfsdfsdfsdf 
-    sdfsdfsdfsdf sdfsdfsdfsdf sdfsdfsdfsdf 
-    sdfsdfsdfsdf sdfsdfsdfsdf sdfsdfsdfsdf 
-    sdfsdfsdfsdf sdfsdfsdfsdf sdfsdfsdfsdf 
-    sdfsdfsdfsdf sdfsdfsdfsdf sdfsdfsdfsdf 
-    sdfsdfsdfsdf sdfsdfsdfsdf sdfsdfsdfsdf 
-    sdfsdfsdfsdf 
+    $ cat test_ls_2
+    /bin/ls
+    /bin/ls
 
 ### Non-Interactive Mode
 
-    sdfsdfsdfsdf sdfsdfsdfsdf sdfsdfsdfsdf 
-    sdfsdfsdfsdf sdfsdfsdfsdf sdfsdfsdfsdf 
-    sdfsdfsdfsdf sdfsdfsdfsdf sdfsdfsdfsdf 
-    sdfsdfsdfsdf sdfsdfsdfsdf sdfsdfsdfsdf 
-    sdfsdfsdfsdf sdfsdfsdfsdf sdfsdfsdfsdf 
-    sdfsdfsdfsdf sdfsdfsdfsdf sdfsdfsdfsdf 
-    sdfsdfsdfsdf 
+    $ cat test_ls_2 | ./hsh
+    hsh main.c shell.c test_ls_2
 
 ----
 ## changelog
