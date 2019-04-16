@@ -22,12 +22,12 @@ int _fork(char *myself, command_t *cmd_node, char *path, char **env)
 	}
 	if (child_pid == 0) /* Child process */
 	{
-                if (_stat(myself, command))
-                {
-                        _exec(command, cmd_node->command, env);
-                }
-                else
-                        return (-1); /* Ask for custom process */
+		if (_stat(myself, command))
+		{
+				_exec(command, cmd_node->command, env);
+		}
+		else
+				return (-1); /* Ask for custom process */
 	}
 	else /* Parent process */
 	{

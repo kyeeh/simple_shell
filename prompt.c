@@ -2,7 +2,7 @@
 /**
  * _prompt - write prompt and read a command line.
  * @myself: String for prompt init.
- * @shell_phrase: String for prompt init.
+ * @argv: shell arguments.
  * @hist: History head list.
  *
  * Return: NULL or pointer to command list.
