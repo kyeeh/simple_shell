@@ -39,7 +39,6 @@ int main ()
 	copy_tokens = tokens;
 	while (copy_tokens != NULL)
 	{
-		printf("%s\n", *copy_tokens);
 		copy_tokens++;
 	}
 

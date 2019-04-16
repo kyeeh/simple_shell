@@ -2,7 +2,7 @@
 /**
  * _prompt - write prompt and read a command line.
  * @myself: String for prompt init.
- * @shell_phrase: String for prompt init.
+ * @argv: shell arguments.
  * @hist: History head list.
  *
  * Return: NULL or pointer to command list.
@@ -28,7 +28,6 @@ command_t **_prompt(char *myself, char *argv)
 	/* Insert into history here */
 
 	/* print_listint(*hist); */
-	printf("This is char_amount %s\n", cmd_line);
 	if (char_amount < 0)
 		cmd_list = NULL;
 	else

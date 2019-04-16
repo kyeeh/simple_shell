@@ -10,10 +10,6 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
-
-#define BIN_PATH /bin
-#define BUFF_SIZE 1024
-
 /**
  * struct error_msg - An structure for each error message
  *
@@ -37,8 +33,8 @@ typedef struct error_msg
  */
 typedef struct built_s
 {
-  char *command;
-  void (*f)(char **);
+	char *command;
+	void (*f)(char **);
 } built_t;
 
 /**
@@ -59,7 +55,7 @@ typedef struct history
 } history_t;
 
 /**
- * struct cmd - An structure for each command
+ * struct command_s - An structure for each command
  *
  * @command: command with arguments.
  * @next: pointer to next command.
@@ -84,16 +80,16 @@ command_t *_parser_cmd(char *, char *);
 size_t _parser_arg(char *, char **, size_t *);
 void print_char_pointer_arr(char **, size_t);
 int add_nodeint(history_t **head, char *str);
-  char *_strdup(char *str);
+char *_strdup(char *str);
 void free_listint(history_t *head);
 void print_listint(const history_t *);
 char *find_path(char **);
 char *_strstr(char *haystack, char *needle);
-void print_env();
+void print_env(char **);
 char *_which(char *p_rec, char *first_arg);
 char *string_nconcat(char *s1, char *s2, unsigned int n);
 int _strcmp(char *s1, char *s2);
-void _exit_func();
+void _exit_func(char **);
 int verif_built_comm(char *str, char **env);
 
 /* Error handler */
@@ -102,6 +98,6 @@ void error_handler_set_default(int, char *);
 
 /* Command Utilities */
 command_t *new_cmd_node(char *);
-void add_tok_to_cmd(char *, command_t *, size_t , char *);
+void add_tok_to_cmd(char *, command_t *, size_t, char *);
 
 #endif
