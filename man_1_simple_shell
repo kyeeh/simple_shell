@@ -12,11 +12,9 @@
 .Nd command interpreter (shell)
 .Sh SYNOPSIS             \" Section Header - required - don't modify
 .Nm
-.Op Fl abcd              \" [-abcd]
 .Op Fl a Ar path         \" [-a path]
-.Op Ar file              \" [file]
-.Op Ar                   \" [file ...]
-.Ar arg0                 \" Underlined argument - use .Ar anywhere to underline
+.Op Ar file              \" [arg]
+.Op Ar                   \" [arg ...]
 arg2 ...                 \" Arguments
 .Sh DESCRIPTION      \" Section Header - required - don't modify
 .Nm
@@ -41,9 +39,59 @@ This is the list of builting commands with their descriptions:
 .Bl -tag -width -indent  \" Begins a tagged list
 .It Fl cd                 \"-a flag as a list item
 The cd command change the simple_shell working directory
-.It Fl cd                 \"-a flag as a list item
-The cd command change the simple_shell working directory
 .El                      \" Ends the list
+
+.Sh COMPILATION
+
+if the simple_shell still does not have an execution file, it is necessary to perform the compilation process from the .c files that host the source code, this process is recommended to do it with the GNU Compiler Collection and you must enter the following line:
+.P
+.RS
+.B $ gcc -Wall -Werror -Wextra -pedantic *.c -o simple_shell
+.P
+.RE
+after the compilation process, your simple_shell should work like this in interactive mode, typing the following line followed by an ENTER::
+.P
+.RS
+.B $ ./simple_shell
+.P
+.RE
+But also in non-interactive mode:
+.P
+.RS
+.B $ echo "/bin/ls" | ./simple_shell
+
+.SH COMMANDS
+The following commands are valid:
+
+.IT
+.B pwd
+- prints the name of the current working directory
+
+.B ls
+- list the contents of the directory
+
+.B echo
+- shows a line of text
+
+.B env
+- display the environment variables and their values
+
+Example of command:
+.IP
+.br
+.\&
+.RS
+\&$ pwd
+.br
+\&/home/my_directory
+
+\&$ echo "Hello World!"
+.br
+\&Hello World!
+
+
+.Sh SEE ALSO
+    man sh
 
 .Sh AUTHORS
 Nildiert Jimenez

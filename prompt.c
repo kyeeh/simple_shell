@@ -16,9 +16,11 @@ command_t **_prompt(char *myself, char *argv)
 	command_t **cmd_list = &cmd_node; /* Command List */
 
 	if (isatty(STDIN_FILENO))
+	{
 		/* write(STDOUT_FILENO, shell_phrase, char_amount); */
 		/* ToDO: Insert new _getline */
 		char_amount = getline(&cmd_line, &buff_size, stdin);
+	}
 	else
 	{
 		/* Take command from **argv */
