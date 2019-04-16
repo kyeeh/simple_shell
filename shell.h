@@ -10,10 +10,6 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
-
-#define BIN_PATH /bin
-#define BUFF_SIZE 1024
-
 /**
  * struct error_msg - An structure for each error message
  *
@@ -89,11 +85,11 @@ void free_listint(history_t *head);
 void print_listint(const history_t *);
 char *find_path(char **);
 char *_strstr(char *haystack, char *needle);
-void print_env(void);
+void print_env(char **);
 char *_which(char *p_rec, char *first_arg);
 char *string_nconcat(char *s1, char *s2, unsigned int n);
 int _strcmp(char *s1, char *s2);
-void _exit_func(void);
+void _exit_func(char **);
 int verif_built_comm(char *str, char **env);
 
 /* Error handler */
